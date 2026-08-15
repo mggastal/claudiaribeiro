@@ -136,7 +136,18 @@
   @media(max-width:860px){
     .hero{grid-template-columns:1fr;min-height:auto;}
     .hero-photo{min-height:340px;}
-    .hero-content{padding:56px 28px 70px;max-width:none;}
+    .hero-content{padding:56px 28px 70px;max-width:none;align-items:center;text-align:center;}
+    .hero-rule{margin:26px auto;}
+    .slogan-box{margin-left:auto;margin-right:auto;text-align:left;}
+    .hero-actions{justify-content:center;}
+  }
+  @media(max-width:600px){
+    .hero-photo{min-height:220px;}
+    .hero-content{padding-top:26px;}
+    .eyebrow{margin-bottom:4px;}
+    .hero-rule{margin:12px auto;}
+    .cargo{margin-top:10px;}
+    .slogan-box{margin-top:20px;}
   }
 
   /* ---------- SECTION SHELL ---------- */
@@ -213,6 +224,12 @@
   footer .foot-brand{font-family:'Anton',sans-serif;color:var(--cream);font-size:14px;letter-spacing:0.03em;}
   footer .legal{padding-top:16px;line-height:1.7;}
 
+  @media(max-width:420px){
+    .wrap{padding:0 20px;}
+    .brand{font-size:13px;}
+    .nav-cta{padding:7px 14px;font-size:11px;}
+    .hero-content{padding-left:20px;padding-right:20px;}
+  }
   @media(prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
 </style>
 </head>
@@ -236,7 +253,6 @@
 <section class="hero">
   <div class="sheen"></div>
   <div class="hero-photo">
-    <span class="ph-tag">Foto sem fundo pendente</span>
     <img src="foto-claudia-hero.png" alt="Professora Claudia" onerror="this.style.display='none'">
   </div>
   <div class="hero-content">
