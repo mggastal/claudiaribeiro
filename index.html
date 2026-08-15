@@ -79,12 +79,12 @@
   }
   .hero-photo img{
     position:absolute;inset:0;width:100%;height:100%;
-    object-fit:contain;object-position:left bottom;
+    object-fit:contain;object-position:left top;
     display:block;
   }
   .hero-content{
     margin-left:42%;
-    padding:150px 64px 90px;display:flex;flex-direction:column;justify-content:center;
+    padding:105px 64px 90px;display:flex;flex-direction:column;justify-content:center;
     max-width:640px;position:relative;z-index:2;min-height:100vh;box-sizing:border-box;
   }
   .eyebrow{font-size:15px;letter-spacing:0.14em;color:var(--gold-soft);margin-bottom:10px;}
@@ -130,6 +130,7 @@
   @media(max-width:860px){
     .hero{min-height:auto;}
     .hero-photo{position:relative;top:auto;left:auto;bottom:auto;width:100%;height:460px;}
+    .hero-photo img{object-position:center top;}
     .hero-photo::after{
       content:'';position:absolute;left:0;right:0;bottom:0;height:90px;
       background:linear-gradient(to bottom, transparent, var(--purple-deep) 85%);
