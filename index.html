@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professora Claudia 11888 — Deputada Estadual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,800;1,900&family=Nunito:wght@800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple-deep:#190C2B;
+    --purple-panel:#3B1F66;
+    --purple-panel-2:#2C1650;
+    --gold:#D9A62E;
+    --gold-soft:#F0C662;
+    --cream:#F3EDE3;
+    --navy:#141F37;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--purple-deep);
+    color:var(--cream);
+    font-family:'Archivo',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  .display{font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:0.01em;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* diagonal vinyl sheen, subtle, one streak */
+  .sheen{
+    position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.05) 48%, rgba(255,255,255,0.09) 50%, rgba(255,255,255,0.05) 52%, transparent 60%);
+  }
+
+  /* content-pending stamp, replaces generic dashed placeholder box */
+  .pend{position:relative;background:rgba(20,10,35,0.35);}
+  .pend::after{
+    content:attr(data-ph);
+    position:absolute;top:10px;right:-32px;
+    background:var(--gold);color:var(--navy);
+    font-family:'Anton',sans-serif;font-size:10px;letter-spacing:0.06em;
+    padding:4px 38px;transform:rotate(38deg);
+    box-shadow:0 2px 6px rgba(0,0,0,0.35);
+    white-space:nowrap;
+  }
+
+  /* ---------- NAV ---------- */
+  header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(25,12,43,0.94);}
+  .tricolor{height:3px;background:linear-gradient(90deg, #2E7D32 0 33.33%, #C62828 33.33% 66.66%, #F2B705 66.66% 100%);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+  .brand{font-family:'Anton',sans-serif;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;}
+  .brand span{color:var(--gold-soft);}
+  .navlinks{display:flex;gap:30px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
+  .navlinks a{opacity:0.8;text-decoration:none;}
+  .navlinks a:hover{opacity:1;color:var(--gold-soft);}
+  .nav-cta{
+    background:var(--gold);color:var(--navy);font-family:'Anton',sans-serif;font-size:13px;
+    padding:9px 20px;border-radius:4px;text-decoration:none;letter-spacing:0.03em;
+  }
+  @media(max-width:760px){.navlinks{display:none;}}
+
+  /* ---------- HERO — editorial, sem painel, com o roxo em gradiente ---------- */
+  .hero{
+    display:grid;grid-template-columns:42% 58%;
+    min-height:100vh;
+    position:relative;
+    background:
+      radial-gradient(ellipse 900px 700px at 85% 10%, rgba(120,72,190,0.55), transparent 60%),
+      linear-gradient(150deg, #2E1755 0%, #4B2A82 38%, #1E0F38 78%, var(--purple-deep) 100%);
+  }
+  .hero .sheen{opacity:0.7;}
+  .hero-photo{
+    position:relative;z-index:2;
+    display:flex;align-items:flex-end;justify-content:center;
+  }
+  .hero-photo img{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:contain;object-position:bottom center;
+    display:block;
+  }
+  .hero-photo .ph-tag{
+    position:relative;z-index:1;margin-bottom:28px;
+    font-family:'Anton',sans-serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;
+    color:rgba(243,237,227,0.4);border:1px dashed rgba(243,237,227,0.3);
+    padding:6px 12px;border-radius:4px;
+  }
+  .hero-content{
+    padding:150px 64px 90px;display:flex;flex-direction:column;justify-content:center;
+    max-width:640px;position:relative;z-index:2;
+  }
+  .eyebrow{font-size:15px;letter-spacing:0.14em;color:var(--gold-soft);margin-bottom:10px;}
+  .hero h1{
+    font-family:'Archivo',sans-serif;font-weight:900;font-style:italic;
+    font-size:clamp(50px,6.5vw,80px);line-height:0.92;color:var(--cream);
+  }
+  .hero-rule{width:64px;height:2px;background:var(--gold);margin:26px 0;}
+  .numero{font-family:'Nunito',sans-serif;font-weight:900;font-style:normal;letter-spacing:-0.01em;font-size:clamp(64px,8.5vw,104px);line-height:0.85;color:var(--cream);}
+  .cargo{
+    display:inline-block;margin-top:16px;font-family:'Anton',sans-serif;
+    font-size:14px;letter-spacing:0.12em;color:var(--gold);
+    border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);padding:6px 0;
+  }
+  .slogan-box{
+    display:flex;align-items:center;gap:16px;margin-top:28px;
+    border:1.5px solid var(--gold);border-radius:10px;padding:14px 20px;
+    background:rgba(59,31,102,0.35);max-width:440px;
+  }
+  .slogan-icon{
+    width:46px;height:46px;flex-shrink:0;border-radius:50%;border:1.5px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .slogan-icon svg{width:24px;height:24px;}
+  .slogan-text{font-family:'Archivo',sans-serif;font-size:16px;font-weight:700;font-style:italic;color:var(--cream);line-height:1.32;}
+  .slogan-text .accent{color:var(--gold-soft);display:block;}
+  .party-row{display:flex;align-items:center;gap:12px;margin-top:22px;}
+  .party-logo-ph{
+    width:42px;height:42px;flex-shrink:0;border-radius:6px;
+    border:1.5px dashed rgba(30,155,215,0.55);background:rgba(30,155,215,0.08);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Anton',sans-serif;font-size:8px;letter-spacing:0.04em;color:rgba(30,155,215,0.7);
+    text-align:center;line-height:1.25;
+  }
+  .party-info b{display:block;font-family:'Archivo',sans-serif;font-weight:800;font-size:15px;color:var(--cream);}
+  .party-info span{font-size:11.5px;color:rgba(243,237,227,0.5);}
+  .hero-actions{display:flex;gap:32px;margin-top:40px;flex-wrap:wrap;}
+  .link-cta{
+    font-family:'Anton',sans-serif;font-size:13px;letter-spacing:0.06em;
+    color:var(--cream);text-decoration:none;padding-bottom:4px;border-bottom:1.5px solid var(--gold);
+  }
+  .link-cta.ghost{color:rgba(243,237,227,0.6);border-bottom-color:rgba(243,237,227,0.3);}
+  @media(max-width:860px){
+    .hero{grid-template-columns:1fr;min-height:auto;}
+    .hero-photo{min-height:340px;}
+    .hero-content{padding:56px 28px 70px;max-width:none;}
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:100px 0;}
+  .section-head{max-width:620px;margin-bottom:52px;}
+  .section-eyebrow{font-family:'Anton',sans-serif;font-size:13px;letter-spacing:0.1em;color:var(--gold-soft);margin-bottom:12px;}
+  .section-head h2{font-family:'Archivo',sans-serif;font-weight:900;font-style:italic;font-size:clamp(30px,4vw,44px);color:var(--cream);}
+  .section-head p{margin-top:14px;font-size:16px;color:rgba(243,237,227,0.65);}
+
+  /* ---------- SOBRE: HISTÓRIA / BANDEIRA / DADOS ---------- */
+  .sobre{background:var(--purple-deep);padding-bottom:50px;}
+  .sobre-blocks{border-top:1px solid rgba(243,237,227,0.12);}
+  .sobre-block{
+    display:grid;grid-template-columns:220px 1fr;gap:36px;
+    padding:36px 4px;border-bottom:1px solid rgba(243,237,227,0.12);
+  }
+  .sobre-block .tag{font-family:'Anton',sans-serif;font-size:16px;letter-spacing:0.04em;color:var(--gold);padding-top:2px;}
+  .sobre-block .body p{color:rgba(243,237,227,0.75);font-size:15px;margin-bottom:12px;}
+  .timeline{position:relative;padding-left:30px;}
+  .timeline::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:1.5px;background:rgba(217,166,46,0.35);}
+  .timeline-item{position:relative;padding-bottom:32px;}
+  .timeline-item:last-child{padding-bottom:0;}
+  .timeline-item::before{
+    content:'';position:absolute;left:-30px;top:4px;width:11px;height:11px;border-radius:50%;
+    background:var(--purple-deep);border:2px solid var(--gold);
+  }
+  .timeline-item .period{font-family:'Anton',sans-serif;font-size:12px;letter-spacing:0.08em;color:var(--gold);margin-bottom:5px;}
+  .timeline-item h4{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--cream);margin-bottom:6px;}
+  .timeline-item p{font-size:14.5px;color:rgba(243,237,227,0.68);}
+  @media(max-width:700px){.sobre-block{grid-template-columns:1fr;gap:8px;}}
+
+  /* ---------- PROPOSTAS — acordeão ---------- */
+  .propostas{background:var(--purple-deep);padding-top:50px;}
+  .accordion-list{border-top:1px solid rgba(243,237,227,0.12);}
+  .accordion-item{border-bottom:1px solid rgba(243,237,227,0.12);}
+  .accordion-item summary{
+    cursor:pointer;list-style:none;padding:26px 4px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .accordion-item summary::-webkit-details-marker{display:none;}
+  .accordion-item summary h3{
+    font-family:'Anton',sans-serif;font-size:17px;letter-spacing:0.03em;color:var(--cream);
+  }
+  .accordion-item summary .icon{
+    flex-shrink:0;width:28px;height:28px;border:1.5px solid var(--gold);border-radius:50%;
+    color:var(--gold);font-family:'Anton',sans-serif;font-size:16px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .accordion-item[open] summary .icon{background:var(--gold);color:var(--navy);}
+  .accordion-item[open] summary .icon::before{content:'–';}
+  .accordion-item summary .icon::before{content:'+';}
+  .accordion-body{padding:0 4px 30px;max-width:760px;}
+  .accordion-body p{font-size:14.5px;color:rgba(243,237,227,0.62);}
+
+  /* ---------- REDES ---------- */
+  .redes{background:var(--purple-panel);text-align:center;position:relative;overflow:hidden;padding:110px 0;}
+  .redes .section-head{margin-left:auto;margin-right:auto;text-align:center;}
+  .redes-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px;position:relative;z-index:2;}
+  .rede-item{
+    padding:15px 26px;border-radius:6px;border:1.5px solid rgba(243,237,227,0.35);
+    font-family:'Anton',sans-serif;font-size:13px;letter-spacing:0.04em;
+    min-width:150px;text-align:center;color:var(--cream);text-decoration:none;
+  }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{text-align:center;padding:120px 0;background:var(--navy);}
+  .cta-final h2{font-family:'Archivo',sans-serif;font-weight:900;font-style:italic;font-size:clamp(32px,5vw,54px);color:var(--cream);margin-bottom:18px;}
+  .cta-numero{font-family:'Nunito',sans-serif;font-weight:900;font-style:normal;letter-spacing:-0.01em;font-size:clamp(64px,9vw,108px);color:var(--gold);line-height:1;margin-bottom:6px;}
+  .cta-final .cargo{margin-bottom:0;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--purple-deep);padding:40px 0 32px;font-size:13px;color:rgba(243,237,227,0.5);border-top:1px solid rgba(243,237,227,0.1);}
+  footer .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:22px;}
+  footer .foot-brand{font-family:'Anton',sans-serif;color:var(--cream);font-size:14px;letter-spacing:0.03em;}
+  footer .legal{padding-top:16px;line-height:1.7;}
+
+  @media(prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">Professora <span>Claudia</span></div>
+      <div class="navlinks">
+        <a href="#sobre">Sobre</a>
+        <a href="#propostas">Propostas</a>
+        <a href="#redes">Redes sociais</a>
+      </div>
+      <a class="nav-cta" href="#cta">11888</a>
+    </nav>
+  </div>
+  <div class="tricolor"></div>
+</header>
+
+<section class="hero">
+  <div class="sheen"></div>
+  <div class="hero-photo">
+    <span class="ph-tag">Foto sem fundo pendente</span>
+    <img src="foto-claudia-hero.png" alt="Professora Claudia" onerror="this.style.display='none'">
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow display">Professora</div>
+    <h1>Claudia</h1>
+    <div class="hero-rule"></div>
+    <div class="numero">11888</div>
+    <span class="cargo">Deputada Estadual</span>
+    <div class="slogan-box">
+      <div class="slogan-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#D9A62E" stroke-width="1.6"><path d="M4 21c0-3 2-5 4-5h1M20 21c0-3-2-5-4-5h-1" stroke-linecap="round"/><circle cx="9" cy="8" r="3"/><circle cx="15" cy="8" r="3"/><path d="M11 13.5c.7.7 1.3.7 2 0" stroke-linecap="round"/></svg>
+      </div>
+      <p class="slogan-text">Pelo envelhecimento saudável<span class="accent">do Rio Grande do Sul</span></p>
+    </div>
+    <div class="hero-actions">
+      <a href="#propostas" class="link-cta">Propostas →</a>
+      <a href="#redes" class="link-cta ghost">Redes sociais →</a>
+    </div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow display">Quem é a Claudia</div>
+      <h2>História</h2>
+    </div>
+    <div class="sobre-blocks">
+      <div class="sobre-block">
+        <div class="tag">História</div>
+        <div class="body">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="period">Infância</div>
+              <h4>De Pelotas para Cachoeirinha</h4>
+              <p>Nasceu em Pelotas e, aos 3 anos, foi morar em Cachoeirinha (Grande POA), numa fazenda estação experimental do IRGA onde o pai trabalhava, enquanto a mãe dava aula na Escola Agrícola CADOP ao lado.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="period">Volta a Pelotas, aos 11 anos</div>
+              <h4>Colégio Santa Margarida</h4>
+              <p>Cursou o final do primeiro grau e o Magistério, e entrou na Invernada Tiro de Laço do Colégio.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="period">Graduação</div>
+              <h4>Licenciatura em Desenho — UFPel</h4>
+              <p>Integrou a Invernada Artística do CTG Sinuelo do Sul, do Colégio Pelotense, a convite — e lá foi primeira prenda.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="period">Após a graduação</div>
+              <h4>ETFPel e docência no Capão do Leão</h4>
+              <p>Voltou a estudar na antiga ETFPel, no curso noturno de Edificações, e trabalhava como professora nas Escolas do Cerro do Estado e Elberto Madruga.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="period">1991</div>
+              <h4>Professora concursada — ETFPel</h4>
+              <p>Aprovada em concurso para o Curso de Desenho Industrial. Fez Especialização em Educação (UCPel) e Mestrado em Memória e Patrimônio (UFPel).</p>
+            </div>
+            <div class="timeline-item">
+              <div class="period">+12 anos</div>
+              <h4>Coordenadora Adjunta do Curso</h4>
+              <p>Na ETFPel, hoje IFSul Campus Pelotas, responsável pela parte de materiais, patrimônio e área física, além de lecionar diversas disciplinas ao longo dos anos.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="period">Aposentadoria</div>
+              <h4>30 anos de serviço</h4>
+              <p>Aposentou-se e foi em busca de voluntariado: atuou no Conselho Municipal da Pessoa Idosa de Pelotas e é integrante do Rotary Club de Pelotas e do Grupo de Escoteiros Itapuã – 98 RS, do IFSul.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="period">Hoje</div>
+              <h4>Fórum Social Mundial da População Idosa</h4>
+              <p>Há dois anos participa da organização e é palestrante nos eventos do Fórum e paralelos. Filha de um guerreiro de 83 anos, defende a causa do idoso — muitas vezes invisível — e pretende atuar também pelos produtores rurais, pelas mulheres e pela educação.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="propostas" id="propostas">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow display">Bandeiras de campanha</div>
+      <h2>Propostas para a metade sul</h2>
+      <p>Toque em cada tema para abrir. Substitua pelos compromissos reais da campanha.</p>
+    </div>
+    <div class="accordion-list">
+      <details class="accordion-item">
+        <summary><h3>Economia grisalha</h3><span class="icon"></span></summary>
+        <div class="accordion-body"><p>[ Texto sobre o fomento à economia grisalha — geração de renda e oportunidades para a população idosa. ]</p></div>
+      </details>
+      <details class="accordion-item">
+        <summary><h3>Aposentados</h3><span class="icon"></span></summary>
+        <div class="accordion-body"><p>[ Texto sobre a defesa dos direitos e da renda dos aposentados. ]</p></div>
+      </details>
+      <details class="accordion-item">
+        <summary><h3>Melhor idade</h3><span class="icon"></span></summary>
+        <div class="accordion-body"><p>[ Texto sobre programas e espaços voltados à melhor idade. ]</p></div>
+      </details>
+      <details class="accordion-item">
+        <summary><h3>Dados</h3><span class="icon"></span></summary>
+        <div class="accordion-body"><p>[ Estatísticas sobre a população idosa da metade sul que embasam a proposta. ]</p></div>
+      </details>
+      <details class="accordion-item">
+        <summary><h3>Professora</h3><span class="icon"></span></summary>
+        <div class="accordion-body"><p>[ Texto sobre a experiência docente aplicada à educação e formação continuada do idoso. ]</p></div>
+      </details>
+      <details class="accordion-item">
+        <summary><h3>Idosos no campo</h3><span class="icon"></span></summary>
+        <div class="accordion-body"><p>[ Texto sobre o atendimento ao idoso na zona rural da metade sul. ]</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="redes" id="redes">
+  <div class="sheen"></div>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow display">Acompanhe de perto</div>
+      <h2>Redes sociais</h2>
+      <p>Links para os perfis oficiais da campanha.</p>
+    </div>
+    <div class="redes-links">
+      <a class="rede-item" href="https://instagram.com/claudiaribeiro6314" target="_blank" rel="noopener">Instagram</a>
+      <a class="rede-item" href="#">[ Facebook ]</a>
+      <a class="rede-item" href="#">[ WhatsApp ]</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final" id="cta">
+  <div class="wrap">
+    <h2>No dia da eleição, vote</h2>
+    <div class="cta-numero">11888</div>
+    <span class="cargo">Deputada Estadual</span>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">Professora Claudia — 11888</div>
+      <div>Compromisso e honestidade pela metade sul.</div>
+    </div>
+    <div class="legal pend" data-ph="texto legal TSE">
+      [ Inserir texto obrigatório: número de registro do candidato, Partido Progressistas (PP) — número 11, coligação, responsável técnico pela produção do material e demais exigências da legislação eleitoral vigente. ]
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
