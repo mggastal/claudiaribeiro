@@ -224,7 +224,21 @@
   footer{background:var(--purple-deep);padding:40px 0 32px;font-size:13px;color:rgba(243,237,227,0.5);border-top:1px solid rgba(243,237,227,0.1);}
   footer .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:22px;}
   footer .foot-brand{font-family:'Anton',sans-serif;color:var(--cream);font-size:14px;letter-spacing:0.03em;}
-  footer .legal{padding-top:16px;line-height:1.7;}
+  .foot-legal-row{
+    display:flex;align-items:center;gap:20px;padding-top:20px;
+    border-top:1px solid rgba(243,237,227,0.1);
+  }
+  .foot-party-logo{width:44px;height:auto;flex-shrink:0;}
+  .foot-legal-row .legal{line-height:1.6;}
+  .foot-legal-row .legal p{margin:0 0 2px;}
+  .foot-credit{
+    margin-top:22px;padding-top:16px;border-top:1px solid rgba(243,237,227,0.1);
+    font-size:12px;
+  }
+  .foot-credit a{color:rgba(243,237,227,0.6);text-decoration:underline;}
+  @media(max-width:600px){
+    .foot-legal-row{flex-direction:column;align-items:flex-start;}
+  }
 
   @media(max-width:420px){
     .wrap{padding:0 20px;}
@@ -400,8 +414,16 @@
       <div class="foot-brand">Professora Claudia — 11888</div>
       <div>Compromisso e honestidade pela metade sul.</div>
     </div>
-    <div class="legal pend" data-ph="texto legal TSE">
-      [ Inserir texto obrigatório: número de registro do candidato, Partido Progressistas (PP) — número 11, coligação, responsável técnico pela produção do material e demais exigências da legislação eleitoral vigente. ]
+    <div class="foot-legal-row">
+      <img src="logo-progressistas.png" alt="Progressistas" class="foot-party-logo">
+      <div class="legal">
+        <p>Coligação: O Rio Grande Pode Mais — Federação UNIÃO PROGRESSISTA</p>
+        <p>CNPJ: 68.403.968/0001-00</p>
+        <p>Eleição 2026 — Claudia Campos Ribeiro — Deputada Estadual</p>
+      </div>
+    </div>
+    <div class="foot-credit">
+      Desenvolvido por <a href="https://www.grigolettimidias.com.br/" target="_blank" rel="noopener">Grigoletti Mídias</a>
     </div>
   </div>
 </footer>
