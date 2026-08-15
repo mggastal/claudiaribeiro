@@ -58,10 +58,7 @@
   .navlinks{display:flex;gap:30px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
   .navlinks a{opacity:0.8;text-decoration:none;}
   .navlinks a:hover{opacity:1;color:var(--gold-soft);}
-  .nav-cta{
-    background:var(--gold);color:var(--navy);font-family:'Anton',sans-serif;font-size:13px;
-    padding:9px 20px;border-radius:4px;text-decoration:none;letter-spacing:0.03em;
-  }
+  .nav-party-logo{height:32px;width:auto;display:block;}
   @media(max-width:760px){.navlinks{display:none;}}
 
   /* ---------- HERO — editorial, sem painel, com o roxo em gradiente ---------- */
@@ -123,8 +120,8 @@
   .party-info span{font-size:11.5px;color:rgba(243,237,227,0.5);}
   .hero-actions{display:flex;gap:32px;margin-top:40px;flex-wrap:wrap;}
   .link-cta{
-    font-family:'Anton',sans-serif;font-size:13px;letter-spacing:0.06em;
-    color:var(--cream);text-decoration:none;padding-bottom:4px;border-bottom:1.5px solid var(--gold);
+    font-family:'Anton',sans-serif;font-size:20px;letter-spacing:0.06em;
+    color:var(--cream);text-decoration:none;padding-bottom:6px;border-bottom:2px solid var(--gold);
   }
   .link-cta.ghost{color:rgba(243,237,227,0.6);border-bottom-color:rgba(243,237,227,0.3);}
   @media(max-width:860px){
@@ -176,9 +173,9 @@
     content:'';position:absolute;left:-30px;top:4px;width:11px;height:11px;border-radius:50%;
     background:var(--purple-deep);border:2px solid var(--gold);
   }
-  .timeline-item .period{font-family:'Anton',sans-serif;font-size:12px;letter-spacing:0.08em;color:var(--gold);margin-bottom:5px;}
-  .timeline-item h4{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--cream);margin-bottom:6px;}
-  .timeline-item p{font-size:14.5px;color:rgba(243,237,227,0.68);}
+  .timeline-item .period{font-family:'Anton',sans-serif;font-size:13px;letter-spacing:0.08em;color:var(--gold);margin-bottom:5px;}
+  .timeline-item h4{font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;color:var(--cream);margin-bottom:6px;}
+  .timeline-item p{font-size:16px;color:rgba(243,237,227,0.68);}
   @media(max-width:700px){.sobre-block{grid-template-columns:1fr;gap:8px;}}
 
   /* ---------- PROPOSTAS — acordeão ---------- */
@@ -191,7 +188,7 @@
   }
   .accordion-item summary::-webkit-details-marker{display:none;}
   .accordion-item summary h3{
-    font-family:'Anton',sans-serif;font-size:17px;letter-spacing:0.03em;color:var(--cream);
+    font-family:'Anton',sans-serif;font-size:19px;letter-spacing:0.03em;color:var(--cream);
   }
   .accordion-item summary .icon{
     flex-shrink:0;width:28px;height:28px;border:1.5px solid var(--gold);border-radius:50%;
@@ -202,7 +199,7 @@
   .accordion-item[open] summary .icon::before{content:'–';}
   .accordion-item summary .icon::before{content:'+';}
   .accordion-body{padding:0 4px 30px;max-width:760px;}
-  .accordion-body p{font-size:14.5px;color:rgba(243,237,227,0.62);}
+  .accordion-body p{font-size:16px;color:rgba(243,237,227,0.62);}
 
   /* ---------- REDES ---------- */
   .redes{background:var(--purple-panel);text-align:center;position:relative;overflow:hidden;padding:110px 0;}
@@ -221,14 +218,14 @@
   .cta-final .cargo{margin-bottom:0;}
 
   /* ---------- FOOTER ---------- */
-  footer{background:var(--purple-deep);padding:40px 0 32px;font-size:13px;color:rgba(243,237,227,0.5);border-top:1px solid rgba(243,237,227,0.1);}
-  footer .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:22px;}
+  footer{background:var(--purple-deep);padding:40px 0 32px;font-size:13px;color:rgba(243,237,227,0.5);border-top:1px solid rgba(243,237,227,0.1);text-align:center;}
+  footer .foot-top{margin-bottom:22px;}
   footer .foot-brand{font-family:'Anton',sans-serif;color:var(--cream);font-size:14px;letter-spacing:0.03em;}
   .foot-legal-row{
-    display:flex;align-items:center;gap:20px;padding-top:20px;
+    display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:20px;
     border-top:1px solid rgba(243,237,227,0.1);
   }
-  .foot-party-logo{width:44px;height:auto;flex-shrink:0;}
+  .foot-party-logo{width:140px;height:auto;}
   .foot-legal-row .legal{line-height:1.6;}
   .foot-legal-row .legal p{margin:0 0 2px;}
   .foot-credit{
@@ -236,14 +233,11 @@
     font-size:12px;
   }
   .foot-credit a{color:rgba(243,237,227,0.6);text-decoration:underline;}
-  @media(max-width:600px){
-    .foot-legal-row{flex-direction:column;align-items:flex-start;}
-  }
 
   @media(max-width:420px){
     .wrap{padding:0 20px;}
     .brand{font-size:13px;}
-    .nav-cta{padding:7px 14px;font-size:11px;}
+    .nav-party-logo{height:26px;}
     .hero-content{padding-left:20px;padding-right:20px;}
   }
   @media(prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
@@ -260,7 +254,7 @@
         <a href="#propostas">Propostas</a>
         <a href="#redes">Redes sociais</a>
       </div>
-      <a class="nav-cta" href="#cta">11888</a>
+      <img src="logo-progressistas.png" alt="Progressistas" class="nav-party-logo">
     </nav>
   </div>
   <div class="tricolor"></div>
@@ -412,7 +406,6 @@
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">Professora Claudia — 11888</div>
-      <div>Compromisso e honestidade pela metade sul.</div>
     </div>
     <div class="foot-legal-row">
       <img src="logo-progressistas.png" alt="Progressistas" class="foot-party-logo">
@@ -423,7 +416,7 @@
       </div>
     </div>
     <div class="foot-credit">
-      Desenvolvido por <a href="https://www.grigolettimidias.com.br/" target="_blank" rel="noopener">Grigoletti Mídias</a>
+      Desenvolvido por <a href="https://www.grigolettimidias.com.br/?utm_campaign=claudiaribeiro" target="_blank" rel="noopener">Grigoletti Mídias</a>
     </div>
   </div>
 </footer>
