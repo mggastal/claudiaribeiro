@@ -80,7 +80,7 @@
   }
   .hero-photo img{
     position:absolute;inset:0;width:100%;height:100%;
-    object-fit:contain;object-position:bottom center;
+    object-fit:cover;object-position:left bottom;
     display:block;
   }
   .hero-photo .ph-tag{
@@ -135,19 +135,26 @@
   .link-cta.ghost{color:rgba(243,237,227,0.6);border-bottom-color:rgba(243,237,227,0.3);}
   @media(max-width:860px){
     .hero{grid-template-columns:1fr;min-height:auto;}
-    .hero-photo{min-height:340px;}
+    .hero-photo{min-height:460px;}
+    .hero-photo::after{
+      content:'';position:absolute;left:0;right:0;bottom:0;height:90px;
+      background:linear-gradient(to bottom, transparent, var(--purple-deep) 85%);
+      z-index:3;pointer-events:none;
+    }
     .hero-content{padding:56px 28px 70px;max-width:none;align-items:center;text-align:center;}
     .hero-rule{margin:26px auto;}
     .slogan-box{margin-left:auto;margin-right:auto;text-align:left;}
     .hero-actions{justify-content:center;}
   }
   @media(max-width:600px){
-    .hero-photo{min-height:220px;}
-    .hero-content{padding-top:26px;}
-    .eyebrow{margin-bottom:4px;}
-    .hero-rule{margin:12px auto;}
-    .cargo{margin-top:10px;}
-    .slogan-box{margin-top:20px;}
+    .hero-photo{min-height:400px;}
+    .hero-content{padding-top:22px;}
+    .eyebrow{margin-bottom:2px;}
+    .hero h1{font-size:44px;}
+    .hero-rule{margin:8px auto;}
+    .numero{font-size:56px;}
+    .cargo{margin-top:6px;}
+    .slogan-box{margin-top:18px;}
   }
 
   /* ---------- SECTION SHELL ---------- */
