@@ -181,7 +181,12 @@
   @media(max-width:700px){.sobre-block{grid-template-columns:1fr;gap:8px;}}
 
   /* ---------- CARROSSEL DE FOTOS ---------- */
-  .carrossel-section{padding:0;background:var(--purple-deep);}
+  .carrossel-section{padding:0;background:var(--purple-deep);position:relative;}
+  .carrossel-section::after{
+    content:'';position:absolute;left:0;right:0;bottom:0;height:60px;
+    background:linear-gradient(to bottom, transparent, #FFFFFF);
+    pointer-events:none;
+  }
   .carrossel-wrap{
     overflow-x:auto;overflow-y:hidden;padding:36px 0;
     -webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab;
@@ -199,7 +204,7 @@
     flex-shrink:0;pointer-events:none;
   }
   @media(max-width:700px){
-    .carrossel-set img{height:170px;}
+    .carrossel-set img{height:255px;}
     .carrossel-wrap{padding:24px 0;}
   }
 
