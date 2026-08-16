@@ -16,6 +16,8 @@
     --gold-soft:#F0C662;
     --cream:#F3EDE3;
     --navy:#141F37;
+    --party-blue:#1E9BD7;
+    --party-blue-dark:#0B4E78;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
@@ -152,9 +154,9 @@
   /* ---------- SECTION SHELL ---------- */
   section{padding:100px 0;}
   .section-head{max-width:620px;margin-bottom:52px;}
-  .section-eyebrow{font-family:'Anton',sans-serif;font-size:13px;letter-spacing:0.1em;color:var(--gold-soft);margin-bottom:12px;}
-  .section-head h2{font-family:'Archivo',sans-serif;font-weight:900;font-style:italic;font-size:clamp(30px,4vw,44px);color:var(--cream);}
-  .section-head p{margin-top:14px;font-size:16px;color:rgba(243,237,227,0.65);}
+  .section-eyebrow{font-family:'Anton',sans-serif;font-size:14px;letter-spacing:0.1em;color:var(--gold-soft);margin-bottom:12px;}
+  .section-head h2{font-family:'Archivo',sans-serif;font-weight:900;font-style:italic;font-size:clamp(33px,4.4vw,48px);color:var(--cream);}
+  .section-head p{margin-top:14px;font-size:18px;color:rgba(243,237,227,0.65);}
 
   /* ---------- SOBRE: HISTÓRIA / BANDEIRA / DADOS ---------- */
   .sobre{background:var(--purple-deep);padding-bottom:50px;}
@@ -173,9 +175,9 @@
     content:'';position:absolute;left:-30px;top:4px;width:11px;height:11px;border-radius:50%;
     background:var(--purple-deep);border:2px solid var(--gold);
   }
-  .timeline-item .period{font-family:'Anton',sans-serif;font-size:13px;letter-spacing:0.08em;color:var(--gold);margin-bottom:5px;}
-  .timeline-item h4{font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;color:var(--cream);margin-bottom:6px;}
-  .timeline-item p{font-size:16px;color:rgba(243,237,227,0.68);}
+  .timeline-item .period{font-family:'Anton',sans-serif;font-size:14px;letter-spacing:0.08em;color:var(--gold);margin-bottom:5px;}
+  .timeline-item h4{font-family:'Archivo',sans-serif;font-weight:800;font-size:20px;color:var(--cream);margin-bottom:6px;}
+  .timeline-item p{font-size:18px;color:rgba(243,237,227,0.68);}
   @media(max-width:700px){.sobre-block{grid-template-columns:1fr;gap:8px;}}
 
   /* ---------- CARROSSEL DE FOTOS ---------- */
@@ -183,6 +185,7 @@
   .carrossel-wrap{
     overflow-x:auto;overflow-y:hidden;padding:36px 0;
     -webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab;
+    user-select:none;
   }
   .carrossel-wrap::-webkit-scrollbar{display:none;}
   .carrossel-wrap:active{cursor:grabbing;}
@@ -201,7 +204,16 @@
   }
 
   /* ---------- PROPOSTAS — acordeão ---------- */
-  .propostas{background:var(--purple-deep);padding-top:50px;}
+  .propostas{background:#FFFFFF;padding-top:50px;}
+  .propostas .section-eyebrow{color:#8A6A1E;}
+  .propostas .section-head h2{color:#5B3A8C;}
+  .propostas .section-head p{color:rgba(91,58,140,0.68);}
+  .propostas .accordion-list{border-top:1px solid rgba(91,58,140,0.15);}
+  .propostas .accordion-item{border-bottom:1px solid rgba(91,58,140,0.15);}
+  .propostas .accordion-item summary h3{color:#5B3A8C;}
+  .propostas .accordion-item summary .icon{border-color:#5B3A8C;color:#5B3A8C;}
+  .propostas .accordion-item[open] summary .icon{background:#5B3A8C;color:#fff;}
+  .propostas .accordion-body p{color:rgba(91,58,140,0.72);}
   .accordion-list{border-top:1px solid rgba(243,237,227,0.12);}
   .accordion-item{border-bottom:1px solid rgba(243,237,227,0.12);}
   .accordion-item summary{
@@ -210,7 +222,7 @@
   }
   .accordion-item summary::-webkit-details-marker{display:none;}
   .accordion-item summary h3{
-    font-family:'Anton',sans-serif;font-size:19px;letter-spacing:0.03em;color:var(--cream);
+    font-family:'Anton',sans-serif;font-size:21px;letter-spacing:0.03em;color:var(--cream);
   }
   .accordion-item summary .icon{
     flex-shrink:0;width:28px;height:28px;border:1.5px solid var(--gold);border-radius:50%;
@@ -221,10 +233,13 @@
   .accordion-item[open] summary .icon::before{content:'–';}
   .accordion-item summary .icon::before{content:'+';}
   .accordion-body{padding:0 4px 30px;max-width:760px;}
-  .accordion-body p{font-size:16px;color:rgba(243,237,227,0.62);}
+  .accordion-body p{font-size:18px;color:rgba(243,237,227,0.62);}
 
   /* ---------- REDES ---------- */
-  .redes{background:var(--purple-panel);text-align:center;position:relative;overflow:hidden;padding:110px 0;}
+  .redes{
+    background:linear-gradient(155deg, var(--party-blue-dark) 0%, var(--party-blue) 100%);
+    text-align:center;position:relative;overflow:hidden;padding:110px 0;
+  }
   .redes .section-head{margin-left:auto;margin-right:auto;text-align:center;}
   .redes-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px;position:relative;z-index:2;}
   .rede-item{
@@ -236,7 +251,12 @@
   .rede-item svg{width:18px;height:18px;flex-shrink:0;}
 
   /* ---------- CTA FINAL ---------- */
-  .cta-final{text-align:center;padding:120px 0;background:var(--navy);}
+  .cta-final{
+    text-align:center;padding:120px 0;
+    background:
+      radial-gradient(ellipse 900px 700px at 85% 10%, rgba(120,72,190,0.55), transparent 60%),
+      linear-gradient(150deg, #2E1755 0%, #4B2A82 38%, #1E0F38 78%, var(--purple-deep) 100%);
+  }
   .cta-final h2{font-family:'Archivo',sans-serif;font-weight:900;font-style:italic;font-size:clamp(32px,5vw,54px);color:var(--cream);margin-bottom:18px;}
   .cta-numero{font-family:'Nunito',sans-serif;font-weight:900;font-style:normal;letter-spacing:-0.01em;font-size:clamp(64px,9vw,108px);color:var(--gold);line-height:1;margin-bottom:6px;}
   .cta-final .cargo{margin-bottom:0;}
@@ -401,7 +421,7 @@
   <div class="wrap">
     <div class="section-head">
       <div class="section-eyebrow display">Bandeiras de campanha</div>
-      <h2>Propostas para a metade sul</h2>
+      <h2>Propostas</h2>
       <p>Toque em cada tema para abrir. Substitua pelos compromissos reais da campanha.</p>
     </div>
     <div class="accordion-list">
@@ -419,7 +439,7 @@
       </details>
       <details class="accordion-item">
         <summary><h3>Dados</h3><span class="icon"></span></summary>
-        <div class="accordion-body"><p>[ Estatísticas sobre a população idosa da metade sul que embasam a proposta. ]</p></div>
+        <div class="accordion-body"><p>[ Estatísticas sobre a população idosa do Rio Grande do Sul que embasam a proposta. ]</p></div>
       </details>
       <details class="accordion-item">
         <summary><h3>Professora</h3><span class="icon"></span></summary>
@@ -427,7 +447,7 @@
       </details>
       <details class="accordion-item">
         <summary><h3>Idosos no campo</h3><span class="icon"></span></summary>
-        <div class="accordion-body"><p>[ Texto sobre o atendimento ao idoso na zona rural da metade sul. ]</p></div>
+        <div class="accordion-body"><p>[ Texto sobre o atendimento ao idoso na zona rural do Rio Grande do Sul. ]</p></div>
       </details>
     </div>
   </div>
@@ -512,11 +532,30 @@
 
   wrap.addEventListener('touchstart', pause, {passive:true});
   wrap.addEventListener('touchend', scheduleResume);
-  wrap.addEventListener('mousedown', pause);
-  wrap.addEventListener('mouseup', scheduleResume);
   wrap.addEventListener('mouseenter', pause);
   wrap.addEventListener('mouseleave', scheduleResume);
   wrap.addEventListener('scroll', loopScroll, {passive:true});
+
+  // drag-to-scroll with the mouse (desktop)
+  var isDragging = false, dragStartX = 0, dragStartScroll = 0;
+  wrap.addEventListener('mousedown', function(e){
+    isDragging = true;
+    pause();
+    wrap.style.cursor = 'grabbing';
+    dragStartX = e.pageX;
+    dragStartScroll = wrap.scrollLeft;
+  });
+  window.addEventListener('mousemove', function(e){
+    if(!isDragging) return;
+    e.preventDefault();
+    wrap.scrollLeft = dragStartScroll - (e.pageX - dragStartX);
+  });
+  window.addEventListener('mouseup', function(){
+    if(!isDragging) return;
+    isDragging = false;
+    wrap.style.cursor = 'grab';
+    scheduleResume();
+  });
 })();
 </script>
 </body>
