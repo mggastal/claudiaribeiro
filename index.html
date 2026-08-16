@@ -178,6 +178,29 @@
   .timeline-item p{font-size:16px;color:rgba(243,237,227,0.68);}
   @media(max-width:700px){.sobre-block{grid-template-columns:1fr;gap:8px;}}
 
+  /* ---------- CARROSSEL DE FOTOS ---------- */
+  .carrossel-section{padding:0;background:var(--purple-deep);}
+  .carrossel-wrap{overflow:hidden;padding:36px 0;}
+  .carrossel-track{
+    display:flex;width:max-content;
+    animation:carrossel-scroll 34s linear infinite;
+  }
+  .carrossel-set{display:flex;gap:20px;padding-right:20px;}
+  .carrossel-set img{
+    height:260px;width:auto;border-radius:10px;object-fit:cover;
+    box-shadow:0 8px 24px rgba(0,0,0,0.35);
+    flex-shrink:0;
+  }
+  .carrossel-wrap:hover .carrossel-track{animation-play-state:paused;}
+  @keyframes carrossel-scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  @media(max-width:700px){
+    .carrossel-set img{height:170px;}
+    .carrossel-wrap{padding:24px 0;}
+  }
+
   /* ---------- PROPOSTAS — acordeão ---------- */
   .propostas{background:var(--purple-deep);padding-top:50px;}
   .accordion-list{border-top:1px solid rgba(243,237,227,0.12);}
@@ -240,7 +263,7 @@
     .nav-party-logo{height:26px;}
     .hero-content{padding-left:20px;padding-right:20px;}
   }
-  @media(prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+  @media(prefers-reduced-motion: reduce){html{scroll-behavior:auto;}.carrossel-track{animation:none;}}
 </style>
 </head>
 <body>
@@ -337,6 +360,37 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="carrossel-section">
+  <div class="carrossel-wrap">
+    <div class="carrossel-track">
+      <div class="carrossel-set">
+        <img src="carrossel_foto_1.png" alt="Foto 1" onerror="this.style.display='none'">
+        <img src="carrossel_foto_2.png" alt="Foto 2" onerror="this.style.display='none'">
+        <img src="carrossel_foto_3.png" alt="Foto 3" onerror="this.style.display='none'">
+        <img src="carrossel_foto_4.png" alt="Foto 4" onerror="this.style.display='none'">
+        <img src="carrossel_foto_5.png" alt="Foto 5" onerror="this.style.display='none'">
+        <img src="carrossel_foto_6.png" alt="Foto 6" onerror="this.style.display='none'">
+        <img src="carrossel_foto_7.png" alt="Foto 7" onerror="this.style.display='none'">
+        <img src="carrossel_foto_8.png" alt="Foto 8" onerror="this.style.display='none'">
+        <img src="carrossel_foto_9.png" alt="Foto 9" onerror="this.style.display='none'">
+        <img src="carrossel_foto_10.png" alt="Foto 10" onerror="this.style.display='none'">
+      </div>
+      <div class="carrossel-set" aria-hidden="true">
+        <img src="carrossel_foto_1.png" alt="" onerror="this.style.display='none'">
+        <img src="carrossel_foto_2.png" alt="" onerror="this.style.display='none'">
+        <img src="carrossel_foto_3.png" alt="" onerror="this.style.display='none'">
+        <img src="carrossel_foto_4.png" alt="" onerror="this.style.display='none'">
+        <img src="carrossel_foto_5.png" alt="" onerror="this.style.display='none'">
+        <img src="carrossel_foto_6.png" alt="" onerror="this.style.display='none'">
+        <img src="carrossel_foto_7.png" alt="" onerror="this.style.display='none'">
+        <img src="carrossel_foto_8.png" alt="" onerror="this.style.display='none'">
+        <img src="carrossel_foto_9.png" alt="" onerror="this.style.display='none'">
+        <img src="carrossel_foto_10.png" alt="" onerror="this.style.display='none'">
       </div>
     </div>
   </div>
