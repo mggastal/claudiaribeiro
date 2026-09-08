@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professora Claudia — Projeção de Investimento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,800;1,900&family=Nunito:wght@800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#4B2A82;
+    --purple-soft:#8B5FBF;
+    --gold:#D9A62E;
+    --ink:#1E1730;
+    --gray:#6B6478;
+    --line:#EAE6F0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:#FFFFFF;
+    color:var(--ink);
+    font-family:'Archivo',sans-serif;
+    line-height:1.6;
+  }
+  .display{font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:0.01em;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  header{padding:56px 0 40px;border-bottom:1px solid var(--line);}
+  .brand{font-family:'Anton',sans-serif;font-size:13px;letter-spacing:0.1em;color:var(--gold);margin-bottom:14px;}
+  header h1{font-family:'Archivo',sans-serif;font-weight:900;font-style:italic;font-size:clamp(28px,4vw,44px);color:var(--purple);max-width:760px;}
+  header p{margin-top:12px;font-size:16px;color:var(--gray);max-width:600px;}
+
+  .kpi-row{display:flex;gap:18px;flex-wrap:wrap;margin-top:36px;}
+  .kpi-card{flex:1;min-width:170px;background:#FAF9FC;border:1px solid var(--line);border-radius:10px;padding:18px 20px;}
+  .kpi-card .kpi-label{font-size:11.5px;letter-spacing:0.05em;text-transform:uppercase;color:var(--gray);margin-bottom:8px;}
+  .kpi-card .kpi-value{font-family:'Nunito',sans-serif;font-weight:900;font-size:25px;color:var(--purple);}
+
+  section{padding:56px 0;}
+  .section-head{max-width:640px;margin-bottom:32px;}
+  .section-eyebrow{font-family:'Anton',sans-serif;font-size:12px;letter-spacing:0.1em;color:var(--gold);margin-bottom:8px;}
+  .section-head h2{font-family:'Archivo',sans-serif;font-weight:900;font-style:italic;font-size:clamp(22px,3vw,32px);color:var(--ink);}
+  .section-head p{margin-top:10px;font-size:14.5px;color:var(--gray);}
+
+  .chart-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px;margin-bottom:28px;}
+  .chart-panel h3{font-family:'Anton',sans-serif;font-size:14px;letter-spacing:0.03em;color:var(--ink);margin-bottom:18px;}
+
+  .charts-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:start;}
+
+  .bar-list{display:flex;flex-direction:column;gap:9px;max-height:680px;overflow-y:auto;padding-right:6px;}
+  .bar-row{display:grid;grid-template-columns:150px 1fr 85px;align-items:center;gap:10px;cursor:default;}
+  .bar-label{font-size:12px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .bar-track{height:13px;background:#F1EEF6;border-radius:4px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:4px;transition:opacity .15s;}
+  .bar-row:hover .bar-fill{opacity:0.75;}
+  .bar-value{font-size:11.5px;color:var(--gray);text-align:right;font-variant-numeric:tabular-nums;}
+
+  .donut-wrap{display:flex;flex-direction:column;align-items:center;gap:20px;}
+  .donut-svg{width:200px;height:200px;}
+  .donut-seg{cursor:default;transition:opacity .15s;stroke:#fff;stroke-width:1.5;}
+  .donut-seg:hover{opacity:0.8;}
+  .legend{width:100%;display:flex;flex-direction:column;gap:11px;}
+  .legend-item{display:flex;align-items:center;gap:9px;font-size:13px;}
+  .legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+  .legend-label{flex:1;color:var(--ink);}
+  .legend-value{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums;}
+  .legend-pct{color:var(--gray);font-weight:400;}
+
+  .chart-svg{width:100%;height:auto;display:block;}
+  .daily-bar{cursor:default;transition:opacity .15s;}
+  .daily-bar:hover{opacity:0.75;}
+  .cum-pt{cursor:default;}
+  .cum-pt:hover{r:7;}
+
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;position:relative;}
+  .table-scroll-top{overflow-x:scroll;overflow-y:hidden;height:16px;margin-bottom:2px;scrollbar-width:thin;}
+  .table-scroll-top-inner{height:1px;}
+  .table-scroll-top::-webkit-scrollbar{height:10px;}
+  .table-scroll-top::-webkit-scrollbar-track{background:#F1EEF6;border-radius:6px;}
+  .table-scroll-top::-webkit-scrollbar-thumb{background:var(--purple-soft);border-radius:6px;}
+  .scroll-hint{display:none;}
+  @media(max-width:760px){
+    .scroll-hint{
+      display:block;font-size:12px;color:var(--purple);font-weight:600;
+      margin-bottom:10px;
+    }
+  }
+  table{border-collapse:collapse;width:100%;font-size:12.5px;white-space:nowrap;}
+  th, td{padding:9px 13px;text-align:right;border-bottom:1px solid var(--line);}
+  th{font-family:'Anton',sans-serif;font-size:13px;letter-spacing:0.03em;color:var(--purple);text-transform:uppercase;background:#FAF9FC;position:sticky;top:0;}
+  td{color:var(--ink);font-variant-numeric:tabular-nums;}
+  .sticky-col{position:sticky;left:0;background:#fff;text-align:left;font-weight:600;z-index:2;}
+  th.sticky-col{background:#FAF9FC;z-index:3;}
+  .total-col{color:var(--purple);font-weight:700;background:#F6F2FB;}
+  tbody tr:nth-child(even) td:not(.sticky-col):not(.total-col){background:#FBFAFD;}
+  .table-total-row td{font-weight:800;color:var(--purple);background:#F1EAFB;border-top:2px solid var(--gold);}
+  .table-total-row td.sticky-col{background:#F1EAFB;}
+
+  .note{margin-top:16px;font-size:12.5px;color:var(--gray);}
+
+  footer{padding:32px 0;text-align:center;font-size:12px;color:var(--gray);border-top:1px solid var(--line);}
+
+  #tooltip{
+    position:fixed;pointer-events:none;background:var(--ink);color:#fff;font-size:12.5px;
+    padding:7px 11px;border-radius:6px;transform:translate(-50%,-120%);opacity:0;transition:opacity .1s;
+    white-space:nowrap;z-index:100;font-family:'Archivo',sans-serif;
+  }
+  #tooltip.show{opacity:1;}
+
+  @media(max-width:900px){
+    .charts-grid{grid-template-columns:1fr;}
+    .bar-row{grid-template-columns:100px 1fr 65px;}
+  }
+</style>
+</head>
+<body>
+
+<div id="tooltip"></div>
+
+<header>
+  <div class="wrap">
+    <div class="brand display">Professora Claudia — 11888</div>
+    <h1>Projeção de investimento em vídeo</h1>
+    <p>Distribuição do orçamento de mídia por praça, no período de 10/09 a 30/09/2026 (21 dias de campanha).</p>
+    <div class="kpi-row">
+      <div class="kpi-card"><div class="kpi-label">Investimento total</div><div class="kpi-value">R$ 14.585</div></div>
+      <div class="kpi-card"><div class="kpi-label">Início diário</div><div class="kpi-value">R$ 530</div></div>
+      <div class="kpi-card"><div class="kpi-label">Pico diário</div><div class="kpi-value">R$ 1.195</div></div>
+      <div class="kpi-card"><div class="kpi-label">Duração</div><div class="kpi-value">21 dias</div></div>
+      <div class="kpi-card"><div class="kpi-label">Praças</div><div class="kpi-value">37</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="graficos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow display">Análise</div>
+      <h2>Investimento e projeção</h2>
+      <p>O orçamento diário cresce em três degraus ao longo da campanha, com reforço para o Estado, Pelotas e regiões nas últimas semanas. Passe o mouse sobre os gráficos para ver os valores exatos.</p>
+    </div>
+
+    <div class="chart-panel">
+      <h3>Investimento diário (R$) — 10/09 a 30/09</h3>
+      
+<svg viewBox="0 0 920 320" class="chart-svg" preserveAspectRatio="xMidYMid meet">
+  <line x1="60" y1="280.0" x2="900" y2="280.0" stroke="#EEE" stroke-width="1"/><text x="50" y="284.0" font-size="11" fill="#888" text-anchor="end" font-family="Archivo, sans-serif">R$ 0</text><line x1="60" y1="221.5" x2="900" y2="221.5" stroke="#EEE" stroke-width="1"/><text x="50" y="225.5" font-size="11" fill="#888" text-anchor="end" font-family="Archivo, sans-serif">R$ 299</text><line x1="60" y1="163.0" x2="900" y2="163.0" stroke="#EEE" stroke-width="1"/><text x="50" y="167.0" font-size="11" fill="#888" text-anchor="end" font-family="Archivo, sans-serif">R$ 598</text><line x1="60" y1="104.5" x2="900" y2="104.5" stroke="#EEE" stroke-width="1"/><text x="50" y="108.5" font-size="11" fill="#888" text-anchor="end" font-family="Archivo, sans-serif">R$ 896</text><line x1="60" y1="46.0" x2="900" y2="46.0" stroke="#EEE" stroke-width="1"/><text x="50" y="50.0" font-size="11" fill="#888" text-anchor="end" font-family="Archivo, sans-serif">R$ 1.195</text>
+  <rect x="62.0" y="176.2" width="36.0" height="103.8" rx="3" fill="#4B2A82" class="daily-bar" data-tip="10/09: R$ 530"/>
+<rect x="102.0" y="176.2" width="36.0" height="103.8" rx="3" fill="#4B2A82" class="daily-bar" data-tip="11/09: R$ 530"/>
+<rect x="142.0" y="176.2" width="36.0" height="103.8" rx="3" fill="#4B2A82" class="daily-bar" data-tip="12/09: R$ 530"/>
+<rect x="182.0" y="176.2" width="36.0" height="103.8" rx="3" fill="#4B2A82" class="daily-bar" data-tip="13/09: R$ 530"/>
+<rect x="222.0" y="176.2" width="36.0" height="103.8" rx="3" fill="#4B2A82" class="daily-bar" data-tip="14/09: R$ 530"/>
+<rect x="262.0" y="176.2" width="36.0" height="103.8" rx="3" fill="#4B2A82" class="daily-bar" data-tip="15/09: R$ 530"/>
+<rect x="302.0" y="176.2" width="36.0" height="103.8" rx="3" fill="#4B2A82" class="daily-bar" data-tip="16/09: R$ 530"/>
+<rect x="342.0" y="176.2" width="36.0" height="103.8" rx="3" fill="#4B2A82" class="daily-bar" data-tip="17/09: R$ 530"/>
+<rect x="382.0" y="176.2" width="36.0" height="103.8" rx="3" fill="#4B2A82" class="daily-bar" data-tip="18/09: R$ 530"/>
+<rect x="422.0" y="176.2" width="36.0" height="103.8" rx="3" fill="#4B2A82" class="daily-bar" data-tip="19/09: R$ 530"/>
+<rect x="462.0" y="176.2" width="36.0" height="103.8" rx="3" fill="#4B2A82" class="daily-bar" data-tip="20/09: R$ 530"/>
+<rect x="502.0" y="176.2" width="36.0" height="103.8" rx="3" fill="#4B2A82" class="daily-bar" data-tip="21/09: R$ 530"/>
+<rect x="542.0" y="176.2" width="36.0" height="103.8" rx="3" fill="#4B2A82" class="daily-bar" data-tip="22/09: R$ 530"/>
+<rect x="582.0" y="176.2" width="36.0" height="103.8" rx="3" fill="#4B2A82" class="daily-bar" data-tip="23/09: R$ 530"/>
+<rect x="622.0" y="104.7" width="36.0" height="175.3" rx="3" fill="#4B2A82" class="daily-bar" data-tip="24/09: R$ 895"/>
+<rect x="662.0" y="104.7" width="36.0" height="175.3" rx="3" fill="#4B2A82" class="daily-bar" data-tip="25/09: R$ 895"/>
+<rect x="702.0" y="104.7" width="36.0" height="175.3" rx="3" fill="#4B2A82" class="daily-bar" data-tip="26/09: R$ 895"/>
+<rect x="742.0" y="104.7" width="36.0" height="175.3" rx="3" fill="#4B2A82" class="daily-bar" data-tip="27/09: R$ 895"/>
+<rect x="782.0" y="46.0" width="36.0" height="234.0" rx="3" fill="#4B2A82" class="daily-bar" data-tip="28/09: R$ 1.195"/>
+<rect x="822.0" y="46.0" width="36.0" height="234.0" rx="3" fill="#4B2A82" class="daily-bar" data-tip="29/09: R$ 1.195"/>
+<rect x="862.0" y="46.0" width="36.0" height="234.0" rx="3" fill="#4B2A82" class="daily-bar" data-tip="30/09: R$ 1.195"/>
+  <text x="80.0" y="169.2" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 530</text>
+<text x="120.0" y="169.2" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 530</text>
+<text x="160.0" y="169.2" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 530</text>
+<text x="200.0" y="169.2" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 530</text>
+<text x="240.0" y="169.2" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 530</text>
+<text x="280.0" y="169.2" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 530</text>
+<text x="320.0" y="169.2" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 530</text>
+<text x="360.0" y="169.2" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 530</text>
+<text x="400.0" y="169.2" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 530</text>
+<text x="440.0" y="169.2" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 530</text>
+<text x="480.0" y="169.2" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 530</text>
+<text x="520.0" y="169.2" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 530</text>
+<text x="560.0" y="169.2" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 530</text>
+<text x="600.0" y="169.2" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 530</text>
+<text x="640.0" y="97.7" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 895</text>
+<text x="680.0" y="97.7" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 895</text>
+<text x="720.0" y="97.7" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 895</text>
+<text x="760.0" y="97.7" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 895</text>
+<text x="800.0" y="39.0" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 1.195</text>
+<text x="840.0" y="39.0" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 1.195</text>
+<text x="880.0" y="39.0" font-size="8.5" fill="#4B2A82" font-weight="700" text-anchor="middle" font-family="Archivo, sans-serif">R$ 1.195</text>
+  <text x="80.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">10/09</text><text x="160.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">12/09</text><text x="240.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">14/09</text><text x="320.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">16/09</text><text x="400.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">18/09</text><text x="480.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">20/09</text><text x="560.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">22/09</text><text x="640.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">24/09</text><text x="720.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">26/09</text><text x="800.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">28/09</text><text x="880.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">30/09</text>
+</svg>
+
+    </div>
+
+    <div class="chart-panel">
+      <h3>Investimento acumulado no período</h3>
+      
+<svg viewBox="0 0 920 320" class="chart-svg" preserveAspectRatio="xMidYMid meet">
+  <line x1="60" y1="280.0" x2="900" y2="280.0" stroke="#EEE" stroke-width="1"/><text x="50" y="284.0" font-size="11" fill="#888" text-anchor="end" font-family="Archivo, sans-serif">R$ 0</text><line x1="60" y1="221.5" x2="900" y2="221.5" stroke="#EEE" stroke-width="1"/><text x="50" y="225.5" font-size="11" fill="#888" text-anchor="end" font-family="Archivo, sans-serif">R$ 3.646</text><line x1="60" y1="163.0" x2="900" y2="163.0" stroke="#EEE" stroke-width="1"/><text x="50" y="167.0" font-size="11" fill="#888" text-anchor="end" font-family="Archivo, sans-serif">R$ 7.292</text><line x1="60" y1="104.5" x2="900" y2="104.5" stroke="#EEE" stroke-width="1"/><text x="50" y="108.5" font-size="11" fill="#888" text-anchor="end" font-family="Archivo, sans-serif">R$ 10.939</text><line x1="60" y1="46.0" x2="900" y2="46.0" stroke="#EEE" stroke-width="1"/><text x="50" y="50.0" font-size="11" fill="#888" text-anchor="end" font-family="Archivo, sans-serif">R$ 14.585</text>
+  <polygon points="60.0,271.5 102.0,263.0 144.0,254.5 186.0,246.0 228.0,237.5 270.0,229.0 312.0,220.5 354.0,212.0 396.0,203.5 438.0,195.0 480.0,186.5 522.0,178.0 564.0,169.5 606.0,161.0 648.0,146.6 690.0,132.2 732.0,117.9 774.0,103.5 816.0,84.3 858.0,65.2 900.0,46.0 900.0,280.0 60.0,280.0" fill="url(#areaGrad)"/>
+  <polyline points="60.0,271.5 102.0,263.0 144.0,254.5 186.0,246.0 228.0,237.5 270.0,229.0 312.0,220.5 354.0,212.0 396.0,203.5 438.0,195.0 480.0,186.5 522.0,178.0 564.0,169.5 606.0,161.0 648.0,146.6 690.0,132.2 732.0,117.9 774.0,103.5 816.0,84.3 858.0,65.2 900.0,46.0" fill="none" stroke="#4B2A82" stroke-width="2.5"/>
+  <circle cx="60.0" cy="271.5" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="102.0" cy="263.0" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="144.0" cy="254.5" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="186.0" cy="246.0" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="228.0" cy="237.5" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="270.0" cy="229.0" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="312.0" cy="220.5" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="354.0" cy="212.0" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="396.0" cy="203.5" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="438.0" cy="195.0" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="480.0" cy="186.5" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="522.0" cy="178.0" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="564.0" cy="169.5" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="606.0" cy="161.0" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="648.0" cy="146.6" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="690.0" cy="132.2" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="732.0" cy="117.9" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="774.0" cy="103.5" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="816.0" cy="84.3" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="858.0" cy="65.2" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+<circle cx="900.0" cy="46.0" r="5" fill="#fff" stroke="#4B2A82" stroke-width="2.5" pointer-events="none"/>
+  <text x="894.0" y="30.0" font-size="13" fill="#4B2A82" font-weight="800" text-anchor="end" font-family="Archivo, sans-serif">R$ 14.585</text>
+  <circle cx="60.0" cy="271.5" r="20" fill="transparent" class="cum-pt" data-tip="10/09: acumulado R$ 530"/>
+<circle cx="102.0" cy="263.0" r="20" fill="transparent" class="cum-pt" data-tip="11/09: acumulado R$ 1.060"/>
+<circle cx="144.0" cy="254.5" r="20" fill="transparent" class="cum-pt" data-tip="12/09: acumulado R$ 1.590"/>
+<circle cx="186.0" cy="246.0" r="20" fill="transparent" class="cum-pt" data-tip="13/09: acumulado R$ 2.120"/>
+<circle cx="228.0" cy="237.5" r="20" fill="transparent" class="cum-pt" data-tip="14/09: acumulado R$ 2.650"/>
+<circle cx="270.0" cy="229.0" r="20" fill="transparent" class="cum-pt" data-tip="15/09: acumulado R$ 3.180"/>
+<circle cx="312.0" cy="220.5" r="20" fill="transparent" class="cum-pt" data-tip="16/09: acumulado R$ 3.710"/>
+<circle cx="354.0" cy="212.0" r="20" fill="transparent" class="cum-pt" data-tip="17/09: acumulado R$ 4.240"/>
+<circle cx="396.0" cy="203.5" r="20" fill="transparent" class="cum-pt" data-tip="18/09: acumulado R$ 4.770"/>
+<circle cx="438.0" cy="195.0" r="20" fill="transparent" class="cum-pt" data-tip="19/09: acumulado R$ 5.300"/>
+<circle cx="480.0" cy="186.5" r="20" fill="transparent" class="cum-pt" data-tip="20/09: acumulado R$ 5.830"/>
+<circle cx="522.0" cy="178.0" r="20" fill="transparent" class="cum-pt" data-tip="21/09: acumulado R$ 6.360"/>
+<circle cx="564.0" cy="169.5" r="20" fill="transparent" class="cum-pt" data-tip="22/09: acumulado R$ 6.890"/>
+<circle cx="606.0" cy="161.0" r="20" fill="transparent" class="cum-pt" data-tip="23/09: acumulado R$ 7.420"/>
+<circle cx="648.0" cy="146.6" r="20" fill="transparent" class="cum-pt" data-tip="24/09: acumulado R$ 8.315"/>
+<circle cx="690.0" cy="132.2" r="20" fill="transparent" class="cum-pt" data-tip="25/09: acumulado R$ 9.210"/>
+<circle cx="732.0" cy="117.9" r="20" fill="transparent" class="cum-pt" data-tip="26/09: acumulado R$ 10.105"/>
+<circle cx="774.0" cy="103.5" r="20" fill="transparent" class="cum-pt" data-tip="27/09: acumulado R$ 11.000"/>
+<circle cx="816.0" cy="84.3" r="20" fill="transparent" class="cum-pt" data-tip="28/09: acumulado R$ 12.195"/>
+<circle cx="858.0" cy="65.2" r="20" fill="transparent" class="cum-pt" data-tip="29/09: acumulado R$ 13.390"/>
+<circle cx="900.0" cy="46.0" r="20" fill="transparent" class="cum-pt" data-tip="30/09: acumulado R$ 14.585"/>
+  <text x="60.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">10/09</text><text x="144.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">12/09</text><text x="228.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">14/09</text><text x="312.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">16/09</text><text x="396.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">18/09</text><text x="480.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">20/09</text><text x="564.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">22/09</text><text x="648.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">24/09</text><text x="732.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">26/09</text><text x="816.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">28/09</text><text x="900.0" y="300" font-size="10.5" fill="#888" text-anchor="middle" font-family="Archivo, sans-serif">30/09</text>
+  <defs>
+    <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4B2A82" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#4B2A82" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+    </div>
+
+    <div class="charts-grid">
+      <div class="chart-panel">
+        <h3>Investimento total por praça (10/09–30/09)</h3>
+        <div class="bar-list">
+          
+      <div class="bar-row" data-tip="RS: R$ 3.100">
+        <div class="bar-label">RS</div>
+        <div class="bar-track"><div class="bar-fill" style="width:100.0%;background:#D9A62E;"></div></div>
+        <div class="bar-value">R$ 3.100</div>
+      </div>
+
+      <div class="bar-row" data-tip="Pelotas: R$ 1.700">
+        <div class="bar-label">Pelotas</div>
+        <div class="bar-track"><div class="bar-fill" style="width:54.8%;background:#4B2A82;"></div></div>
+        <div class="bar-value">R$ 1.700</div>
+      </div>
+
+      <div class="bar-row" data-tip="Região Metropolitana: R$ 850">
+        <div class="bar-label">Região Metropolitana</div>
+        <div class="bar-track"><div class="bar-fill" style="width:27.4%;background:#8B5FBF;"></div></div>
+        <div class="bar-value">R$ 850</div>
+      </div>
+
+      <div class="bar-row" data-tip="Região Sul: R$ 850">
+        <div class="bar-label">Região Sul</div>
+        <div class="bar-track"><div class="bar-fill" style="width:27.4%;background:#8B5FBF;"></div></div>
+        <div class="bar-value">R$ 850</div>
+      </div>
+
+      <div class="bar-row" data-tip="Alegrete: R$ 245">
+        <div class="bar-label">Alegrete</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Arroio Grande: R$ 245">
+        <div class="bar-label">Arroio Grande</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Arroio Padre: R$ 245">
+        <div class="bar-label">Arroio Padre</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Bagé: R$ 245">
+        <div class="bar-label">Bagé</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Bento Gonçalves: R$ 245">
+        <div class="bar-label">Bento Gonçalves</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Cachoeirinha: R$ 245">
+        <div class="bar-label">Cachoeirinha</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Camaquã: R$ 245">
+        <div class="bar-label">Camaquã</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Campanha: R$ 245">
+        <div class="bar-label">Campanha</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Campo Bom: R$ 245">
+        <div class="bar-label">Campo Bom</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Canguçu: R$ 245">
+        <div class="bar-label">Canguçu</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Canoas: R$ 245">
+        <div class="bar-label">Canoas</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Caxias: R$ 245">
+        <div class="bar-label">Caxias</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Cerrito: R$ 245">
+        <div class="bar-label">Cerrito</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Dom Pedrito: R$ 245">
+        <div class="bar-label">Dom Pedrito</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Fronteira Oeste: R$ 245">
+        <div class="bar-label">Fronteira Oeste</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Gravataí: R$ 245">
+        <div class="bar-label">Gravataí</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Jaguarão: R$ 245">
+        <div class="bar-label">Jaguarão</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Litoral: R$ 245">
+        <div class="bar-label">Litoral</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Morro Redondo: R$ 245">
+        <div class="bar-label">Morro Redondo</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Novo Hamburgo: R$ 245">
+        <div class="bar-label">Novo Hamburgo</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Passo Fundo: R$ 245">
+        <div class="bar-label">Passo Fundo</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Pedro Osório: R$ 245">
+        <div class="bar-label">Pedro Osório</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Piratini: R$ 245">
+        <div class="bar-label">Piratini</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Rio Grande: R$ 245">
+        <div class="bar-label">Rio Grande</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Santa Maria: R$ 245">
+        <div class="bar-label">Santa Maria</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Santa Vitória: R$ 245">
+        <div class="bar-label">Santa Vitória</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Santana do Livramento: R$ 245">
+        <div class="bar-label">Santana do Livramento</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="São Borja: R$ 245">
+        <div class="bar-label">São Borja</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="São Leopoldo: R$ 245">
+        <div class="bar-label">São Leopoldo</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="SLS: R$ 245">
+        <div class="bar-label">SLS</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Uruguaiana: R$ 245">
+        <div class="bar-label">Uruguaiana</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Veranópolis: R$ 245">
+        <div class="bar-label">Veranópolis</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+
+      <div class="bar-row" data-tip="Viamão: R$ 245">
+        <div class="bar-label">Viamão</div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.9%;background:#C9C2D9;"></div></div>
+        <div class="bar-value">R$ 245</div>
+      </div>
+        </div>
+      </div>
+      <div class="chart-panel">
+        <h3>Participação por tipo de praça</h3>
+        <div class="donut-wrap">
+          
+<svg viewBox="0 0 220 220" class="donut-svg">
+  <path d="M 110.00,10.00 A 100,100 0 0 1 207.24,86.68 L 168.35,96.01 A 60,60 0 0 0 110.00,50.00 Z" fill="#D9A62E" class="donut-seg" data-tip="Estado (RS): R$ 3.100 (21.3%)"/><path d="M 207.24,86.68 A 100,100 0 0 1 197.90,157.68 L 162.74,138.61 A 60,60 0 0 0 168.35,96.01 Z" fill="#4B2A82" class="donut-seg" data-tip="Pelotas (base): R$ 1.700 (11.7%)"/><path d="M 197.90,157.68 A 100,100 0 0 1 143.48,204.23 L 130.09,166.54 A 60,60 0 0 0 162.74,138.61 Z" fill="#8B5FBF" class="donut-seg" data-tip="Regional: R$ 1.700 (11.7%)"/><path d="M 143.48,204.23 A 100,100 0 1 1 110.00,10.00 L 110.00,50.00 A 60,60 0 1 0 130.09,166.54 Z" fill="#C9C2D9" class="donut-seg" data-tip="Cidades: R$ 8.085 (55.4%)"/>
+</svg>
+
+          <div class="legend">
+            
+      <div class="legend-item">
+        <span class="legend-dot" style="background:#D9A62E;"></span>
+        <span class="legend-label">Estado (RS)</span>
+        <span class="legend-value">R$ 3.100 <span class="legend-pct">(21.3%)</span></span>
+      </div>
+
+      <div class="legend-item">
+        <span class="legend-dot" style="background:#4B2A82;"></span>
+        <span class="legend-label">Pelotas (base)</span>
+        <span class="legend-value">R$ 1.700 <span class="legend-pct">(11.7%)</span></span>
+      </div>
+
+      <div class="legend-item">
+        <span class="legend-dot" style="background:#8B5FBF;"></span>
+        <span class="legend-label">Regional</span>
+        <span class="legend-value">R$ 1.700 <span class="legend-pct">(11.7%)</span></span>
+      </div>
+
+      <div class="legend-item">
+        <span class="legend-dot" style="background:#C9C2D9;"></span>
+        <span class="legend-label">Cidades</span>
+        <span class="legend-value">R$ 8.085 <span class="legend-pct">(55.4%)</span></span>
+      </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tabela" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow display">Detalhamento</div>
+      <h2>Tabela de investimento diário</h2>
+      <p>Valor investido por praça, dia a dia, ao longo do período.</p>
+    </div>
+    <div class="scroll-hint">Arraste para o lado para ver todos os dias →</div>
+    <div class="table-scroll-top"><div class="table-scroll-top-inner"></div></div>
+    <div class="table-wrap" id="tableWrap">
+      <table id="investTable">
+        <thead><tr><th class='sticky-col'>Praça</th><th>10/09</th><th>11/09</th><th>12/09</th><th>13/09</th><th>14/09</th><th>15/09</th><th>16/09</th><th>17/09</th><th>18/09</th><th>19/09</th><th>20/09</th><th>21/09</th><th>22/09</th><th>23/09</th><th>24/09</th><th>25/09</th><th>26/09</th><th>27/09</th><th>28/09</th><th>29/09</th><th>30/09</th><th class='total-col'>Total</th></tr></thead>
+        <tbody>
+          <tr><td class='sticky-col'>Alegrete</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Arroio Grande</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Arroio Padre</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Bagé</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Bento Gonçalves</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Cachoeirinha</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Camaquã</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Campanha</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Campo Bom</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Canguçu</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Canoas</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Caxias</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Cerrito</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Dom Pedrito</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Fronteira Oeste</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Gravataí</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Jaguarão</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Litoral</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Morro Redondo</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Novo Hamburgo</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Passo Fundo</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Pedro Osório</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Pelotas</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td>R$ 200</td><td>R$ 200</td><td>R$ 200</td><td class='total-col'>R$ 1.700</td></tr>
+<tr><td class='sticky-col'>Piratini</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Região Metropolitana</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td class='total-col'>R$ 850</td></tr>
+<tr><td class='sticky-col'>Região Sul</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 25</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 50</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td class='total-col'>R$ 850</td></tr>
+<tr><td class='sticky-col'>Rio Grande</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>RS</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td>R$ 100</td><td>R$ 200</td><td>R$ 200</td><td>R$ 200</td><td>R$ 200</td><td>R$ 300</td><td>R$ 300</td><td>R$ 300</td><td class='total-col'>R$ 3.100</td></tr>
+<tr><td class='sticky-col'>Santa Maria</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Santa Vitória</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Santana do Livramento</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>São Borja</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>São Leopoldo</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>SLS</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Uruguaiana</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Veranópolis</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+<tr><td class='sticky-col'>Viamão</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 10</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td>R$ 15</td><td class='total-col'>R$ 245</td></tr>
+          <tr class='table-total-row'><td class='sticky-col'>TOTAL</td><td>R$ 530</td><td>R$ 530</td><td>R$ 530</td><td>R$ 530</td><td>R$ 530</td><td>R$ 530</td><td>R$ 530</td><td>R$ 530</td><td>R$ 530</td><td>R$ 530</td><td>R$ 530</td><td>R$ 530</td><td>R$ 530</td><td>R$ 530</td><td>R$ 895</td><td>R$ 895</td><td>R$ 895</td><td>R$ 895</td><td>R$ 1.195</td><td>R$ 1.195</td><td>R$ 1.195</td><td class='total-col'>R$ 14.585</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">"RS" refere-se ao investimento estadual (alcance amplo). "Região Metropolitana" e "Região Sul" são segmentações regionais. As demais linhas são cidades específicas — Pelotas recebe o maior aporte individual por ser a base da candidata. O valor diário aumenta a partir de 24/09 e novamente a partir de 28/09.</p>
+  </div>
+</section>
+
+<footer>
+  Professora Claudia 11888 — Deputada Estadual
+</footer>
+
+<script>
+(function(){
+  var tip = document.getElementById('tooltip');
+  function bind(selector){
+    document.querySelectorAll(selector).forEach(function(el){
+      el.addEventListener('mousemove', function(e){
+        tip.textContent = el.getAttribute('data-tip');
+        tip.style.left = e.clientX + 'px';
+        tip.style.top = e.clientY + 'px';
+        tip.classList.add('show');
+      });
+      el.addEventListener('mouseleave', function(){
+        tip.classList.remove('show');
+      });
+    });
+  }
+  bind('.bar-row');
+  bind('.donut-seg');
+  bind('.daily-bar');
+  bind('.cum-pt');
+
+  var wrap = document.getElementById('tableWrap');
+  var table = document.getElementById('investTable');
+  var topScroll = document.querySelector('.table-scroll-top');
+  var topInner = document.querySelector('.table-scroll-top-inner');
+  if (wrap && table && topScroll && topInner) {
+    topInner.style.width = table.scrollWidth + 'px';
+    var syncing = false;
+    topScroll.addEventListener('scroll', function(){
+      if (syncing) return;
+      syncing = true;
+      wrap.scrollLeft = topScroll.scrollLeft;
+      syncing = false;
+    });
+    wrap.addEventListener('scroll', function(){
+      if (syncing) return;
+      syncing = true;
+      topScroll.scrollLeft = wrap.scrollLeft;
+      syncing = false;
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
