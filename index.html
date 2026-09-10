@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Professora Claudia 11888 — Deputada Estadual</title>
+<meta name="description" content="Professora Claudia, 11888 — candidata a Deputada Estadual pelo Rio Grande do Sul. Pelo envelhecimento saudável do Rio Grande do Sul. Conheça a história e acompanhe a campanha.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Professora Claudia 11888 — Deputada Estadual">
+<meta property="og:description" content="Pelo envelhecimento saudável do Rio Grande do Sul. Conheça a história e acompanhe a campanha.">
+<meta property="og:image" content="https://professoraclaudia11888.com.br/foto-claudia-hero.png">
+<meta property="og:url" content="https://professoraclaudia11888.com.br/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="logo-progressistas.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,7 +85,7 @@
     z-index:2;overflow:hidden;
   }
   .hero-photo img{
-    position:absolute;inset:0;width:100%;height:100%;
+    position:absolute;top:74px;left:0;width:100%;height:calc(100% - 74px);
     object-fit:contain;object-position:left bottom;
     display:block;
   }
@@ -130,7 +137,7 @@
   @media(max-width:860px){
     .hero{min-height:auto;}
     .hero-photo{position:relative;top:auto;left:auto;bottom:auto;width:100%;height:460px;}
-    .hero-photo img{object-position:center bottom;}
+    .hero-photo img{top:0;height:100%;object-position:center bottom;}
     .hero-photo::after{
       content:'';position:absolute;left:0;right:0;bottom:0;height:90px;
       background:linear-gradient(to bottom, transparent, var(--purple-deep) 85%);
@@ -223,23 +230,17 @@
   .propostas .section-eyebrow{color:#8A6A1E;}
   .propostas .section-head h2{color:#5B3A8C;}
   .propostas .section-head p{color:rgba(91,58,140,0.68);}
-  .propostas .accordion-list{border-top:1px solid rgba(91,58,140,0.15);}
-  .propostas .accordion-item{border-bottom:1px solid rgba(91,58,140,0.15);}
-  .propostas .accordion-item summary h3{color:#5B3A8C;}
-  .propostas .accordion-body p{color:rgba(91,58,140,0.72);}
-  .accordion-list{border-top:1px solid rgba(243,237,227,0.12);}
-  .accordion-item{border-bottom:1px solid rgba(243,237,227,0.12);}
-  .accordion-item summary{
-    cursor:default;list-style:none;padding:26px 4px;
-    display:flex;align-items:center;justify-content:space-between;gap:20px;
-    pointer-events:none;
+  .manifesto{max-width:720px;}
+  .manifesto-title{
+    font-family:'Archivo',sans-serif;font-weight:900;font-style:italic;
+    font-size:clamp(26px,3.2vw,36px);color:#5B3A8C;margin-bottom:22px;line-height:1.15;
   }
-  .accordion-item summary::-webkit-details-marker{display:none;}
-  .accordion-item summary h3{
-    font-family:'Anton',sans-serif;font-size:21px;letter-spacing:0.03em;color:var(--cream);
+  .manifesto p{font-size:18px;color:rgba(91,58,140,0.75);margin-bottom:16px;}
+  .manifesto blockquote{
+    border-left:4px solid var(--gold);margin:32px 0 0;padding:4px 0 4px 22px;
+    font-family:'Archivo',sans-serif;font-weight:800;font-style:italic;
+    font-size:22px;color:#5B3A8C;
   }
-  .accordion-body{padding:0 4px 30px;max-width:760px;}
-  .accordion-body p{font-size:18px;color:rgba(243,237,227,0.62);}
 
   /* ---------- REDES ---------- */
   .redes{
@@ -396,28 +397,20 @@
   <div class="carrossel-wrap">
     <div class="carrossel-track">
       <div class="carrossel-set">
-        <img src="carrossel_foto_1.png" alt="Foto 1" onerror="this.style.display='none'">
-        <img src="carrossel_foto_2.png" alt="Foto 2" onerror="this.style.display='none'">
-        <img src="carrossel_foto_3.png" alt="Foto 3" onerror="this.style.display='none'">
-        <img src="carrossel_foto_4.png" alt="Foto 4" onerror="this.style.display='none'">
-        <img src="carrossel_foto_5.png" alt="Foto 5" onerror="this.style.display='none'">
-        <img src="carrossel_foto_6.png" alt="Foto 6" onerror="this.style.display='none'">
-        <img src="carrossel_foto_7.png" alt="Foto 7" onerror="this.style.display='none'">
-        <img src="carrossel_foto_8.png" alt="Foto 8" onerror="this.style.display='none'">
-        <img src="carrossel_foto_9.png" alt="Foto 9" onerror="this.style.display='none'">
-        <img src="carrossel_foto_10.png" alt="Foto 10" onerror="this.style.display='none'">
+        <img src="carrossel_foto_1.jpg" alt="Foto 1" onerror="this.style.display='none'">
+        <img src="carrossel_foto_2.jpg" alt="Foto 2" onerror="this.style.display='none'">
+        <img src="carrossel_foto_3.jpg" alt="Foto 3" onerror="this.style.display='none'">
+        <img src="carrossel_foto_4.jpg" alt="Foto 4" onerror="this.style.display='none'">
+        <img src="carrossel_foto_5.jpg" alt="Foto 5" onerror="this.style.display='none'">
+        <img src="carrossel_foto_6.jpg" alt="Foto 6" onerror="this.style.display='none'">
       </div>
       <div class="carrossel-set" aria-hidden="true">
-        <img src="carrossel_foto_1.png" alt="" onerror="this.style.display='none'">
-        <img src="carrossel_foto_2.png" alt="" onerror="this.style.display='none'">
-        <img src="carrossel_foto_3.png" alt="" onerror="this.style.display='none'">
-        <img src="carrossel_foto_4.png" alt="" onerror="this.style.display='none'">
-        <img src="carrossel_foto_5.png" alt="" onerror="this.style.display='none'">
-        <img src="carrossel_foto_6.png" alt="" onerror="this.style.display='none'">
-        <img src="carrossel_foto_7.png" alt="" onerror="this.style.display='none'">
-        <img src="carrossel_foto_8.png" alt="" onerror="this.style.display='none'">
-        <img src="carrossel_foto_9.png" alt="" onerror="this.style.display='none'">
-        <img src="carrossel_foto_10.png" alt="" onerror="this.style.display='none'">
+        <img src="carrossel_foto_1.jpg" alt="" onerror="this.style.display='none'">
+        <img src="carrossel_foto_2.jpg" alt="" onerror="this.style.display='none'">
+        <img src="carrossel_foto_3.jpg" alt="" onerror="this.style.display='none'">
+        <img src="carrossel_foto_4.jpg" alt="" onerror="this.style.display='none'">
+        <img src="carrossel_foto_5.jpg" alt="" onerror="this.style.display='none'">
+        <img src="carrossel_foto_6.jpg" alt="" onerror="this.style.display='none'">
       </div>
     </div>
   </div>
@@ -426,30 +419,14 @@
 <section class="propostas" id="propostas">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-eyebrow display">Bandeiras de campanha</div>
-      <h2>Propostas</h2>
+      <div class="section-eyebrow display">Bandeira da campanha</div>
     </div>
-    <div class="accordion-list">
-      <details class="accordion-item">
-        <summary><h3>Economia grisalha</h3></summary>
-        <div class="accordion-body"><p>[ Texto sobre o fomento à economia grisalha — geração de renda e oportunidades para a população idosa. ]</p></div>
-      </details>
-      <details class="accordion-item">
-        <summary><h3>Aposentados</h3></summary>
-        <div class="accordion-body"><p>[ Texto sobre a defesa dos direitos e da renda dos aposentados. ]</p></div>
-      </details>
-      <details class="accordion-item">
-        <summary><h3>Dados</h3></summary>
-        <div class="accordion-body"><p>[ Estatísticas sobre a população idosa do Rio Grande do Sul que embasam a proposta. ]</p></div>
-      </details>
-      <details class="accordion-item">
-        <summary><h3>Professora</h3></summary>
-        <div class="accordion-body"><p>[ Texto sobre a experiência docente aplicada à educação e formação continuada do idoso. ]</p></div>
-      </details>
-      <details class="accordion-item">
-        <summary><h3>Idosos no campo</h3></summary>
-        <div class="accordion-body"><p>[ Texto sobre o atendimento ao idoso na zona rural do Rio Grande do Sul. ]</p></div>
-      </details>
+    <div class="manifesto">
+      <h3 class="manifesto-title">Lutaremos pelos idosos do Rio Grande do Sul</h3>
+      <p>Os idosos estão sendo esquecidos, e alguém precisa ter coragem para falar sobre isso. Sou a professora Cláudia e decidi levantar uma bandeira que poucas pessoas defendem: a proteção e a dignidade de quem já deu tanto pelo nosso estado.</p>
+      <p>Envelhecer não é um problema — é um triunfo sobre a morte. Por isso, o Rio Grande do Sul precisa se preparar para um envelhecimento saudável, com investimento, cuidado e respeito de verdade, não promessas.</p>
+      <p>Essa pauta precisa chegar à Assembleia Legislativa. Quero ser a voz de quem, muitas vezes, não é ouvido — lutando por dignidade, segurança e saúde para os idosos gaúchos.</p>
+      <blockquote>Quem cuidou de nós merece ser cuidado.</blockquote>
     </div>
   </div>
 </section>
