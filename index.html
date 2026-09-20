@@ -260,6 +260,39 @@ src="https://www.facebook.com/tr?id=1892946508345637&ev=PageView&noscript=1"
     font-size:22px;color:#5B3A8C;
   }
 
+  .propostas-head{margin:76px 0 26px;max-width:none;}
+  .propostas-lista{border-top:1px solid rgba(91,58,140,0.18);}
+  .acc-item{border-bottom:1px solid rgba(91,58,140,0.18);}
+  .acc-item summary{cursor:pointer;list-style:none;padding:26px 4px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+  .acc-item summary::-webkit-details-marker{display:none;}
+  .acc-item summary h3{font-family:'Anton',sans-serif;font-weight:400;font-size:21px;letter-spacing:0.03em;color:#5B3A8C;}
+  .acc-item summary .icon{flex-shrink:0;width:28px;height:28px;border:1.5px solid #5B3A8C;border-radius:50%;color:#5B3A8C;font-family:'Anton',sans-serif;font-size:16px;display:flex;align-items:center;justify-content:center;}
+  .acc-item summary .icon::before{content:'+';}
+  .acc-item[open] summary .icon{background:#5B3A8C;color:#fff;}
+  .acc-item[open] summary .icon::before{content:'–';}
+  .acc-body{padding:0 4px 34px;max-width:760px;}
+  .acc-body p{font-size:18px;color:rgba(46,23,85,0.88);margin-bottom:16px;}
+  .acc-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px;}
+  .acc-chips a{font-family:'Archivo',sans-serif;font-size:13px;font-weight:700;line-height:1.3;color:#5B3A8C;background:#F1EBF9;border:1px solid rgba(91,58,140,0.25);padding:7px 14px;border-radius:999px;text-decoration:none;}
+  .acc-chips a:hover{background:#5B3A8C;color:#fff;}
+  .acc-body h4.sub{scroll-margin-top:96px;font-family:'Archivo',sans-serif;font-weight:800;font-size:20px;line-height:1.25;color:#5B3A8C;margin:34px 0 12px;padding-left:14px;border-left:4px solid #D9A62E;}
+  .acc-body h5.sub2{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:#5B3A8C;margin:20px 0 4px;}
+  .pauta-card{background:#F6F2FB;border-radius:0 14px 14px 0;border-left:4px solid #D9A62E;padding:22px 26px 12px;margin:30px 0;}
+  .pauta-card h4.sub{margin:0 0 10px;padding-left:0;border-left:0;}
+  .acc-body ul{list-style:none;margin:0 0 18px;padding:0;}
+  .acc-body li{font-size:18px;color:rgba(46,23,85,0.88);padding:10px 0;border-bottom:1px solid rgba(91,58,140,0.10);}
+  .acc-body li:last-child{border-bottom:0;}
+  .acc-body ul.pautas li{position:relative;padding:8px 0 8px 26px;border-bottom:0;}
+  .acc-body ul.pautas li::before{content:'';position:absolute;left:3px;top:1.05em;width:9px;height:9px;border-radius:50%;background:#D9A62E;}
+  .acc-body ul.itens li{display:grid;grid-template-columns:54px 1fr;column-gap:8px;align-items:baseline;}
+  .acc-body ul.itens .n{font-family:'Anton',sans-serif;font-size:18px;letter-spacing:0.02em;color:#8A6A1E;white-space:nowrap;}
+  .acc-body a.ref{color:#0B4E78;text-decoration:underline;text-underline-offset:3px;}
+  .acc-body a.ref::before{content:'';display:inline-block;width:0.95em;height:0.95em;margin-right:0.3em;vertical-align:-0.12em;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linejoin='round'%3E%3Cpath d='M6 2h8l5 5v15H6z'/%3E%3Cpath d='M14 2v5h5'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linejoin='round'%3E%3Cpath d='M6 2h8l5 5v15H6z'/%3E%3Cpath d='M14 2v5h5'/%3E%3C/svg%3E") center/contain no-repeat;}
+  .acc-body a.ref:hover{color:#1E9BD7;}
+  @media(max-width:600px){.pauta-card{padding:18px 18px 8px;}.acc-body ul.itens li{grid-template-columns:46px 1fr;}}
+  @media(max-width:600px){.pauta-card{padding:18px 18px 8px;}.acc-body ul.itens li{grid-template-columns:46px 1fr;}}
+  @media(max-width:600px){.pauta-card{padding:18px 18px 8px;}.acc-body ul.itens li{grid-template-columns:46px 1fr;}}
+
   /* ---------- REDES ---------- */
   .redes{
     background:linear-gradient(155deg, var(--party-blue-dark) 0%, var(--party-blue) 100%);
@@ -445,6 +478,154 @@ src="https://www.facebook.com/tr?id=1892946508345637&ev=PageView&noscript=1"
       <p>Envelhecer não é um problema — é um triunfo sobre a morte. Por isso, o Rio Grande do Sul precisa se preparar para um envelhecimento saudável, com investimento, cuidado e respeito de verdade, não promessas.</p>
       <p>Essa pauta precisa chegar à Assembleia Legislativa. Quero ser a voz de quem, muitas vezes, não é ouvido — lutando por dignidade, segurança e saúde para os idosos gaúchos.</p>
       <blockquote>Quem cuidou de nós merece ser cuidado.</blockquote>
+    </div>
+    <div class="section-head propostas-head"><h2>Propostas</h2></div>
+    <div class="propostas-lista">
+      <details class="acc-item">
+        <summary><h3>IDOSO EM GERAL</h3><span class="icon" aria-hidden="true"></span></summary>
+        <div class="acc-body">
+          <ul class="itens">
+          <li><span class="n">1 –</span> <span class="t">Divulgar, qualificar entes públicos e fiscalizar a aplicação do Estatuto da Pessoa Idosa; * <a class="ref" href="https://www.planalto.gov.br/ccivil_03/leis/2003/l10.741.htm" title="Abrir o Estatuto da Pessoa Idosa (Planalto)" target="_blank" rel="noopener"><em>(remeter para Estatuto do Idoso)</em></a></span></li>
+          <li><span class="n">2 -</span> <span class="t">Ampliar e qualificar os Conselhos Municipais da Pessoa Idosa no RS... dos 497 municípios menos de 300 possuem Conselhos. * <a class="ref" href="textos/fundo-do-idoso.html" title="Abrir o texto: Fundo do Idoso"><em>(texto 1)</em></a></span></li>
+          <li><span class="n">3 –</span> <span class="t">Ampliar e qualificar a gestão dos Fundos Municipais da Pessoas Idosa...1/3 dos municípios gaúchos tem boas captações. De quase 800 milhões possíveis, menos de 10 por cento é destinado; * <a class="ref" href="textos/fundo-do-idoso.html" title="Abrir o texto: Fundo do Idoso"><em>(texto 1)</em></a></span></li>
+          <li><span class="n">4 –</span> <span class="t">Ampliar e qualificar as Instituições de Longa Permanência para Pessoas Idosas – ILPIS (Asilos);</span></li>
+          <li><span class="n">5 –</span> <span class="t">Investir na saúde preventiva, incluindo busca ativa de idosos em situação de abandono;</span></li>
+          <li><span class="n">6 –</span> <span class="t">Qualificar e valorizar os  cuidadores de idosos; (sistema de cuidados) – Cuidar quem cuida de nossa gente; *<a class="ref" href="textos/sistema-de-cuidados.html" title="Abrir o texto: Sistema de Cuidados"><em>(TEXTO Sistema de cuidados)</em></a></span></li>
+          <li><span class="n">7 –</span> <span class="t">Criar unidades de passagem para idosos vítimas de violência;</span></li>
+          <li><span class="n">8 –</span> <span class="t">Incentivar Delegacias Especialidades nas cidades maiores;</span></li>
+          <li><span class="n">9 –</span> <span class="t">Constituir Redes Municipais de Atenção a Violência contra a Pessoa Idosa – RENADI (Pelotas tem desde 2022, mas com atuação precária)</span></li>
+          <li><span class="n">10 –</span> <span class="t">Ampliar o número de Cidade Amigas da Pessoa Idosa (pelotas ingressou em 2022 e Rio Grande em 2025). Apenas 6 cidades gaúchas estão neste programa da OMS - ONU, criado em 2007. * <a class="ref" href="textos/cidade-amiga-da-pessoa-idosa.html" title="Abrir o texto: Programa Cidade Amiga da Pessoa Idosa"><em>(texto cidade amiga do idoso)</em></a></span></li>
+          <li><span class="n">11 –</span> <span class="t">Criar ou ampliar redes de apoio em saúde para idosos nas zonas rurais</span></li>
+          <li><span class="n">12-</span> <span class="t">Combater eficazmente violência contra idoso e mulheres;</span></li>
+          <li><span class="n">13 –</span> <span class="t">Solicitar maior agilidade da Justiça e Ministério Público para atender este público;</span></li>
+          <li><span class="n">14 –</span> <span class="t">Criação de Secretária Estadual da Pessoa Idosa;</span></li>
+          <li><span class="n">15 –</span> <span class="t">Ampliar as redes de proteção e saúde dos cuidadores de pessoas idosas, tanto no sistema doméstico, como em entidades filantrópicas e privadas (sistema de cuidados) – Cuidar quem cuida de nossa gente; *<a class="ref" href="textos/sistema-de-cuidados.html" title="Abrir o texto: Sistema de Cuidados"><em>(TEXTO Sistema de cuidados)</em></a></span></li>
+          <li><span class="n">16 –</span> <span class="t">Participar ativamente das discussões da ONU/CEPAL sobre Desenvolvimento da População Mundial e População Idosa no mundo e América Latina/Caribe e trazer para o RS material para discussões, projetos de lei, propostas orçamentárias e fiscalização. *<a class="ref" href="textos/sexta-reuniao-conferencia-regional.html" title="Abrir o texto: Sexta Reunião da Conferência Regional (CEPAL)"><em>(texto sobre conferência e outros materiais da Cepal)</em></a></span></li>
+          <li><span class="n">17 –</span> <span class="t">Incentivar a criação de Cursos para Pessoas Idosas de em todos níveis;</span></li>
+          <li><span class="n">18 –</span> <span class="t">Rediscutir o conceito de asilo e trabalhar com o conceito de moradia da terceira idade;</span></li>
+          <li><span class="n">19 -</span> <span class="t">Incentivar atividades físicas e mentais para os 60+;</span></li>
+          <li><span class="n">20-</span> <span class="t">Nossos idosos tem de possuir sentimento de pertencimento (+60);</span></li>
+          </ul>
+        </div>
+      </details>
+      <details class="acc-item">
+        <summary><h3>PROPRIEDADE RURAIS E IDOSOS NO CAMPO</h3><span class="icon" aria-hidden="true"></span></summary>
+        <div class="acc-body">
+          <p>O RS é um estado agrário por vocação e o gaúcho um campeiro por devoção. É urgente a defesa das propriedades rurais, de nossos produtores e agricultores. Chega do discurso que agro é ruim, é tóxico e outras imensas besteiras. O Agronegócio alimenta, desenvolve enriquece este estado desde os primórdios.</p>
+          <p>AS altíssimas taxações, impostos injustos, leis ambientais descabidas, fiscalização deficiente e tendenciosa, os preços injustos com a constante importação, só compromete nosso estado.</p>
+          <p>O fenômeno do envelhecimento chegou ao acampo antes que nas cidades, na região sul a maioria dos produtores tem mais de 60 anos. Nossos governantes foram incapazes de manter os jovens no campo, por falta de políticas públicas, incentivos, educação, valorização do homem dos campos e outras mazelas.</p>
+          <p>Os serviços ineficientes de telefonia, de internet e principalmente de fornecimento de energia elétrica atinge nossos produtores. Muitos acabam por desistir, abandonar, após perderem uma produção leiteira, ou safras em função que a falta de luz deixa o gado acessar a plantação. E os outros serviços os deixam isolados em seus campos.</p>
+          <p>Por estarmos envelhecendo necessitamos de um atendimento de saúde que vá ao campo. Unidades móveis poderiam circular por nosso campo fazendo uma vigília constante de saúde preventiva, vacinas e atenção básica.</p>
+          <p>Sou filha de um produtor de 83 anos, lúcido, ativo e que enfrenta esta realidade, ou seja, vivo na minha família estes problemas.</p>
+          <p>Sem os produtores rurais comeremos o que?? Chips de computador??</p>
+          <div class="pauta-card">
+            <h4 class="sub" id="rural-pautas">Pautas:</h4>
+            <ul class="pautas">
+            <li>Saúde nos campos;</li>
+            <li>Por impostos justos;</li>
+            <li>Leis ambientais justas;</li>
+            <li>Fiscalização real e sem estar atrelada a política;</li>
+            <li>Preservação dos mananciais e de nossa água;</li>
+            <li>Apoio as entidades de pesquisa públicas e gratuitas;</li>
+            <li>Acesso a financiamentos com juros justos;</li>
+            <li>Luz de qualidade;</li>
+            <li>Telefonia de qualidade;</li>
+            <li>Desburocratização dos impostos.</li>
+            <li>Leis de incentivos para produção rural.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+      <details class="acc-item">
+        <summary><h3>PAUTA SOBRE MULHERES</h3><span class="icon" aria-hidden="true"></span></summary>
+        <div class="acc-body">
+          <nav class="acc-chips" aria-label="Tópicos desta seção"><a href="#mul-pautas">Pautas</a><a href="#mul-lutar">Lutar contra a Violência Política de Gênero</a><a href="#mul-desm">Desmantelamento de Políticas Públicas</a><a href="#mul-cons">Consequências</a></nav>
+          <p>Dia 08 de março foi instituído pela ONU em 1975 como o Dia da Mulher, para a reflexão sobre as lutas, direitos, conquistas e homenagear as muitas mulheres que perderam a vida nesta luta. </p>
+          <p>Somos muitas, estamos ocupando quase todos espaço no mundo. Somos professoras, cientistas, presidentes, e profissionais dos mais diversos níveis e profissões. </p>
+          <p>Somos a maioria no mundo e envelhecemos melhor, pois a maior população de idosos é feminina.</p>
+          <p>Chegamos lá?? Não, estão nos matando aos milhares, não se vê efetividade no cumprimento das leis. Na maioria das vezes nos matam por que dizemos NÃO, não quero, não aceito e nossa sociedade não aceita os nãos das mulheres. Se reclamamos somos chamadas de surtadas, egoístas, mas na realidade somos vítimas. </p>
+          <p>E não falo das mulheres que são oprimidas em muitos países que não podem estudar, trabalhar ou mesmo mostrar seu rosto. Não falo em locais que as mulheres são mutiladas... falo daqui, Brasil.</p>
+          <p>O número de feminicídios é alarmante, as medidas protetivas não protegem, a justiça é lerda e as mulheres estão perdendo suas vidas.</p>
+          <p>A violência se manifesta de diversas maneiras. Uma bastante comum é a violência emocional, onde a vítima é vigiada, afastada de seus familiares, de seus amigos e até proibida de ir e vir, sendo diminuída emocionalmente, atacada constantemente em sua autoestima. O agressor, se questionado, diz que a mulher é louca, surtada e segue sua rotina de matar por dentro. Essas mulheres normalmente carregam feridas eternas se conseguem sobreviver e escapar deste ciclo. E não falo porque li a respeito, falo pp vivi na carne...e falo para mulheres tomarem coragem e romper essas correntes. É difícil?? É! Mas é possível. Lembrem sempre que uma guerreira se ajoelha para rezar e levantar mais forte.</p>
+          <p>Aliada, muitas vezes à violência emocional, como no caso, temos a violência patrimonial, onde o agressor passa a subtrair seu dinheiro, seus bens, adotando a atitude que tudo pertence a ele. </p>
+          <p>Não é incomum, mulheres inteligentes, com vidas estruturadas, famílias unidas que num momento de fragilidade caem neste golpe de um homem que não devia ser chamado de homem, sim de monstro.</p>
+          <p>As famílias quando não botam limites nos seus filhos, onde tudo pode e não se ensina a importância de um não, geram pessoas egocêntricas, incapazes de se colocar no lugar do outro, sem empatia e que não sabe ouvir um não. Quando criamos nossos filhos, um dos valores mais importantes a ensinar é o respeito.</p>
+          <p>Homens que não respeitam o próximo, que não tem empatia (nada ver com psicopatia), agridem animais, idoso e suas companheiras, justificando a agressão à mulher com ciúmes, sentimento de posse onde bater é normal e matar é próximo passo, muitas vezes chegando a extremo de matar os próprios filhos.</p>
+          <p>As mulheres devem refletir.... Devemos eleger mulheres que defendam nossa causa. O legislativo é majoritariamente de homens. E as leis, nem de longe nos favorecem.</p>
+          <p>Vote em mulheres que defendam mulheres efetivamente. </p>
+          <p>Uma filha deve ser crida para ter autoestima elevada, para não se envolver em relacionamentos abusivos, ser independe financeiramente e ativa politicamente para defender seus direitos.</p>
+          <p>Temos direito de estudar, de votar, de andar livremente...porque ainda nos matam? Que sociedade doente criamos?? Que herança deixaremos para nossas filhas e netas??? Está na hora de adotarmos posições duras, exigirmos nossos direitos, e cobrar efetividade e agilidade da polícia, legislativos e judiciário.</p>
+          <div class="pauta-card">
+            <h4 class="sub" id="mul-pautas">Pautas:</h4>
+<ul class="pautas">
+            <li><strong>Igualdade e não discriminação:</strong> Direito a ser tratada com igualdade e a estar livre de todas as formas de discriminação, tanto na lei quanto na prática. </li>
+            <li>Direito à vida, à liberdade, à segurança pessoal, à dignidade e à integridade física. </li>
+          </ul>
+          <h5 class="sub2">Educação e trabalho:</h5>
+<ul class="pautas">
+            <li>Direito à informação e à educação, e ao trabalho sem restrições, podendo ocupar qualquer cargo ou atividade de sua escolha. </li>
+            <li>Direito à saúde e à proteção desta, incluindo os direitos reprodutivos e o planejamento familiar. </li>
+          </ul>
+          <h5 class="sub2">Liberdade de pensamento e expressão:</h5>
+<ul class="pautas">
+            <li>Direito de participar nas atividades políticas e de ser eleita para cargos públicos. </li>
+          </ul>
+          <h5 class="sub2">Proteção contra violência:</h5>
+<ul class="pautas">
+            <li>Direito a não ser submetida a torturas ou maus-tratos, com atendimento humanizado e medidas protetivas em casos de violência. </li>
+          </ul>
+          </div>
+          <p>O desrespeito aos direitos das mulheres na política manifesta-se principalmente através da violência política de gênero, que visa excluir mulheres de espaços de poder e decisão, e do desmantelamento de políticas públicas que promovem a igualdade e o empoderamento feminino. Esses desrespeitos incluem ataques pessoais, assédio, desqualificação, negação de recursos e impedir a participação política de mulheres, especialmente negras, LGBTQIA+ e de classes sociais menos favorecidas. Essa violência prejudica a representatividade e a democracia, afetando as oportunidades de emancipação e o avanço das mulheres na sociedade. </p>
+          <div class="pauta-card">
+            <h4 class="sub" id="mul-lutar">Lutar contra a Violência Política de Gênero:</h4>
+<ul class="pautas">
+            <li><strong>Lutar contra Assédio e Ameaças:</strong> Ataques pessoais e verbais, incluindo ameaças de morte e difamação. </li>
+            <li><strong>Luta contra a Desqualificação e Invalidação:</strong> Questionamento da competência das mulheres com base no gênero, o que fragiliza a autoimagem e leva à retirada da política. </li>
+            <li><strong>Desigualdade de Recursos:</strong> Mulheres candidatas recebem menos apoio financeiro e são impedidas de se expressar livremente. </li>
+          </ul>
+          </div>
+          <div class="pauta-card">
+            <h4 class="sub" id="mul-desm">Desmantelamento de Políticas Públicas:</h4>
+<ul class="pautas">
+            <li><strong>Corte de Programas:</strong> Enfraquecimento de programas voltados para a igualdade de gênero, formação de professores e inclusão de mulheres. </li>
+            <li><strong>Desvalorização da Participação Social:</strong> Redução do apoio aos conselhos e fóruns de participação, que são espaços importantes para a voz das mulheres e dos movimentos sociais. </li>
+          </ul>
+<ul class="pautas">
+            <li>Promover campanhas de prevenção à violência contra a mulher </li>
+            <li>Incentivar o autocuidado físico e emocional </li>
+            <li>Oferecer orientação jurídica básica </li>
+            <li>Estimular empreendedorismo feminino regional </li>
+            <li>Criar rede de apoio comunitária</li>
+          </ul>
+          </div>
+          <h4 class="sub" id="mul-cons">Consequências</h4>
+          <p><strong>Sub-representação Política:</strong> A violência e a falta de apoio levam a um menor número de mulheres em cargos de poder, afetando a representatividade na sociedade. </p>
+<ul class="pautas">
+            <li>Promover campanhas de prevenção à violência contra a mulher incentivar o autocuidado físico e emociona.</li>
+            <li>Oferecer orientação jurídica básica.</li>
+            <li> Estimular empreendedorismo feminino regional.</li>
+            <li> Criar rede de apoio comunitária</li>
+          </ul>
+          <p><strong>Prejuízo à Democracia:</strong> A exclusão das mulheres da política enfraquece a democracia e a participação cidadã. </p>
+          <p><strong>Impacto na Emancipação Feminina:</strong> A diminuição das políticas públicas afeta diretamente a capacidade das mulheres de se empoderarem e progredirem socialmente. </p>
+          <p>Mulheres em geral que buscam participação política, desde candidatas até detentoras de mandato.</p>
+          <p>Mulheres negras, LGBTQIA+ e de classes sociais menos favorecidas, que enfrentam barreiras adicionais e maior invalidação. </p>
+          <p><strong>Fortalecer políticas públicas:</strong> Reivindicar e garantir a continuidade e o aprimoramento de políticas que promovam a igualdade de gênero. </p>
+          <p><strong>Combater a violência política:</strong> Denunciar e punir os atos de violência contra as mulheres na política, reconhecendo a violência política como um crime. </p>
+          <p><strong>Apoiar movimentos sociais:</strong> Valorizar e fortalecer a participação de organizações feministas e movimentos sociais na defesa dos direitos das mulheres. </p>
+          <p>Os quatro eixos estruturantes das políticas de enfrentamento à violência contra a mulher no Brasil são: Garantia da Aplicabilidade da Lei Maria da Penha, Ampliação e Fortalecimento da Rede de Serviços para mulheres em situação de violência, Garantia da Segurança Cidadã e Acesso à Justiça, e Garantia dos Direitos Sexuais e Reprodutivos, além do Enfrentamento à Exploração Sexual e ao Tráfico de Mulheres. Estes eixos buscam garantir direitos, oferecer assistência, prevenir novas violências e promover uma cultura de respeito e igualdade. </p>
+<ul class="pautas">
+            <li>Luta por mais delegacias das mulheres, com atendimento especializado;</li>
+            <li>Luta por mias casas de passagem para acolher mulheres vítimas de violência;</li>
+            <li>Propaganda massiva contra violência a contra mulher e envolver os homens nestas campanhas;</li>
+            <li>Lutar por um salário social de 6 meses para a mulher agredida poder refazer sua vida;</li>
+            <li>Garantir que os filhos sejam imediatamente transferidos para nossas escolas.</li>
+            <li>Buscar cursos que qualifiquem estas mulheres em vulnerabilidade;</li>
+            <li>Exigir celeridade do judiciário, pois a “vítima” se torna novamente “vítima pela lerdeza do poder.</li>
+            <li>Melhorar os sistemas de proteção.</li>
+          </ul>
+        </div>
+      </details>
     </div>
   </div>
 </section>
