@@ -300,6 +300,19 @@ src="https://www.facebook.com/tr?id=1892946508345637&ev=PageView&noscript=1"
     padding:34px 38px;max-width:760px;box-shadow:0 10px 30px rgba(91,58,140,0.08);
   }
   .noticia-card + .noticia-card{margin-top:36px;}
+  .noticia-card summary{cursor:pointer;list-style:none;}
+  .noticia-card summary::-webkit-details-marker{display:none;}
+  .noticia-preview-img{width:100%;height:auto;display:block;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.18);margin-bottom:22px;}
+  .noticia-summary-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+  .noticia-card summary .icon{
+    flex-shrink:0;width:28px;height:28px;margin-top:4px;border:1.5px solid #5B3A8C;border-radius:50%;
+    color:#5B3A8C;font-family:'Anton',sans-serif;font-size:16px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .noticia-card summary .icon::before{content:'+';}
+  .noticia-card[open] summary .icon{background:#5B3A8C;color:#fff;}
+  .noticia-card[open] summary .icon::before{content:'–';}
+  .noticia-body{margin-top:24px;}
   .noticia-galeria{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px;}
   .noticia-galeria img{width:100%;height:260px;object-fit:cover;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.18);}
   @media(max-width:600px){.noticia-galeria{grid-template-columns:1fr;}.noticia-galeria img{height:auto;aspect-ratio:4/3;}}
@@ -310,7 +323,7 @@ src="https://www.facebook.com/tr?id=1892946508345637&ev=PageView&noscript=1"
   }
   .noticia-card h3{
     font-family:'Archivo',sans-serif;font-weight:900;font-style:italic;
-    font-size:clamp(22px,2.6vw,30px);line-height:1.25;color:#5B3A8C;margin-bottom:14px;
+    font-size:clamp(22px,2.6vw,30px);line-height:1.25;color:#5B3A8C;
   }
   .noticia-lead{font-weight:700;font-size:18px;color:rgba(46,23,85,0.85);margin-bottom:20px;}
   .noticia-card p{font-size:17px;line-height:1.7;color:rgba(46,23,85,0.85);margin-bottom:16px;}
@@ -665,35 +678,54 @@ src="https://www.facebook.com/tr?id=1892946508345637&ev=PageView&noscript=1"
       <div class="section-eyebrow display">Fique por dentro</div>
       <h2>Notícias</h2>
     </div>
-    <article class="noticia-card">
-      <span class="noticia-tag">Eleições 2026 · INSS</span>
-      <h3>Comparecimento às urnas nas Eleições 2026 poderá valer como prova de vida para beneficiários do INSS</h3>
-      <p class="noticia-lead">Aposentados e pensionistas que comparecerem às urnas poderão ter o registro utilizado automaticamente pelo INSS para a comprovação de vida</p>
-      <p>Uma informação importante para aposentados, pensionistas e demais beneficiários do Instituto Nacional do Seguro Social (INSS): o comparecimento às urnas nas Eleições 2026 poderá ser utilizado como registro para a comprovação de vida.</p>
-      <p>A confirmação foi divulgada pelo próprio INSS e pelo Tribunal Superior Eleitoral (TSE). O comparecimento do beneficiário à votação integra os eventos que podem ser utilizados pelo Instituto para verificar se a pessoa continua viva, evitando a necessidade de realizar uma prova de vida exclusivamente para essa finalidade.</p>
-      <p>A medida está relacionada à sistemática de comprovação automática de vida adotada pelo INSS. O Instituto realiza o cruzamento de diferentes bases de dados governamentais e, entre essas informações, está o registro de comparecimento às eleições.</p>
-      <p>É importante destacar que quem não comparecer às urnas não terá o benefício bloqueado por esse motivo. O INSS continuará utilizando outras bases de dados para buscar automaticamente a comprovação de vida. O beneficiário somente será chamado a regularizar a situação caso não seja encontrada nenhuma informação que confirme sua vivacidade.</p>
-      <p>Segundo o INSS, a medida também contribui para reduzir deslocamentos e facilitar a vida de milhões de beneficiários, especialmente idosos e pessoas com dificuldade de locomoção. Atualmente, a Prova de Vida é realizada prioritariamente de forma automática, por meio do cruzamento de informações disponíveis nas bases governamentais.</p>
-      <h4 class="noticia-sub">Atenção aos golpes</h4>
-      <p>O INSS também alerta que aposentados e pensionistas devem ter cuidado com mensagens falsas relacionadas à Prova de Vida. O Instituto não solicita senhas, transferências de dinheiro ou dados bancários por telefone e recomenda que o cidadão utilize somente os canais oficiais, como o Meu INSS e a Central 135.</p>
-      <p>A informação oficial sobre a utilização do comparecimento eleitoral como prova de vida pode ser consultada nos canais do INSS e do TSE.</p>
-      <p class="noticia-fonte">Fonte: Instituto Nacional do Seguro Social (INSS) e Tribunal Superior Eleitoral (TSE).</p>
-    </article>
-
-    <article class="noticia-card">
-      <span class="noticia-tag">Eleições 2026 · Progressistas Pelotas</span>
-      <h3>Paulo Gastal destaca importância de candidatura de Pelotas com foco na população idosa</h3>
-      <div class="noticia-galeria">
-        <img src="noticia-paulo-gastal-1.jpg" alt="Professora Claudia ao lado de lideranças do Progressistas em evento de campanha">
-        <img src="noticia-paulo-gastal-2.jpg" alt="Professora Claudia em evento de campanha do Progressistas">
+    <details class="noticia-card">
+      <summary>
+        <img class="noticia-preview-img" src="noticia-comparecimento-urnas.jpg" alt="Eleitora sendo identificada por biometria em cabine de votação da Justiça Eleitoral">
+        <div class="noticia-summary-row">
+          <div class="noticia-summary-text">
+            <span class="noticia-tag">Eleições 2026 · INSS</span>
+            <h3>Comparecimento às urnas nas Eleições 2026 poderá valer como prova de vida para beneficiários do INSS</h3>
+          </div>
+          <span class="icon" aria-hidden="true"></span>
+        </div>
+      </summary>
+      <div class="noticia-body">
+        <p class="noticia-lead">Aposentados e pensionistas que comparecerem às urnas poderão ter o registro utilizado automaticamente pelo INSS para a comprovação de vida</p>
+        <p>Uma informação importante para aposentados, pensionistas e demais beneficiários do Instituto Nacional do Seguro Social (INSS): o comparecimento às urnas nas Eleições 2026 poderá ser utilizado como registro para a comprovação de vida.</p>
+        <p>A confirmação foi divulgada pelo próprio INSS e pelo Tribunal Superior Eleitoral (TSE). O comparecimento do beneficiário à votação integra os eventos que podem ser utilizados pelo Instituto para verificar se a pessoa continua viva, evitando a necessidade de realizar uma prova de vida exclusivamente para essa finalidade.</p>
+        <p>A medida está relacionada à sistemática de comprovação automática de vida adotada pelo INSS. O Instituto realiza o cruzamento de diferentes bases de dados governamentais e, entre essas informações, está o registro de comparecimento às eleições.</p>
+        <p>É importante destacar que quem não comparecer às urnas não terá o benefício bloqueado por esse motivo. O INSS continuará utilizando outras bases de dados para buscar automaticamente a comprovação de vida. O beneficiário somente será chamado a regularizar a situação caso não seja encontrada nenhuma informação que confirme sua vivacidade.</p>
+        <p>Segundo o INSS, a medida também contribui para reduzir deslocamentos e facilitar a vida de milhões de beneficiários, especialmente idosos e pessoas com dificuldade de locomoção. Atualmente, a Prova de Vida é realizada prioritariamente de forma automática, por meio do cruzamento de informações disponíveis nas bases governamentais.</p>
+        <h4 class="noticia-sub">Atenção aos golpes</h4>
+        <p>O INSS também alerta que aposentados e pensionistas devem ter cuidado com mensagens falsas relacionadas à Prova de Vida. O Instituto não solicita senhas, transferências de dinheiro ou dados bancários por telefone e recomenda que o cidadão utilize somente os canais oficiais, como o Meu INSS e a Central 135.</p>
+        <p>A informação oficial sobre a utilização do comparecimento eleitoral como prova de vida pode ser consultada nos canais do INSS e do TSE.</p>
+        <p class="noticia-fonte">Fonte: Instituto Nacional do Seguro Social (INSS) e Tribunal Superior Eleitoral (TSE).</p>
       </div>
-      <p>O presidente do Progressistas de Pelotas, Paulo Gastal, destacou a importância de Pelotas contar, nas eleições deste ano, com uma candidatura comprometida com as pautas e os direitos da população idosa. Para ele, a presença da Professora Cláudia na disputa representa uma oportunidade de ampliar o espaço de debate sobre o envelhecimento e as políticas públicas voltadas à terceira idade.</p>
-      <p>“É muito importante termos uma candidatura de Pelotas que coloque o idoso no centro do debate. Precisamos falar sobre envelhecimento saudável, saúde, qualidade de vida, segurança, respeito e, principalmente, sobre políticas públicas que garantam dignidade para quem dedicou uma vida inteira à construção da nossa sociedade”, afirmou Paulo Gastal.</p>
-      <p>Segundo o presidente do PP, a candidatura da Professora Cláudia também contribui para levar as demandas de Pelotas e da região para uma discussão mais ampla no Estado. A proposta é fortalecer uma agenda que reconheça o crescimento da população idosa e a necessidade de preparação do poder público para essa nova realidade demográfica.</p>
-      <p>“É uma candidatura que nasce em Pelotas e que tem uma pauta muito clara. A Professora Cláudia conhece a nossa realidade e tem uma bandeira importante, que é cuidar de quem cuidou da gente. Ter alguém disposto a defender essa causa e levar essas demandas para a Assembleia Legislativa é muito relevante para a nossa cidade e para toda a região”, ressaltou Gastal.</p>
-      <p>Para o dirigente partidário, a discussão sobre o envelhecimento precisa deixar de ser tratada apenas como uma questão assistencial e passar a envolver também saúde preventiva, mobilidade, inclusão, convivência, autonomia e qualidade de vida.</p>
-      <p>“A população está envelhecendo, e o poder público precisa estar preparado. O idoso precisa ser ouvido, respeitado e ter suas necessidades transformadas em políticas públicas. Por isso, considero muito importante termos uma candidatura de Pelotas que assuma essa pauta com clareza e compromisso”, concluiu Paulo Gastal.</p>
-    </article>
+    </details>
+
+    <details class="noticia-card">
+      <summary>
+        <div class="noticia-galeria">
+          <img src="noticia-paulo-gastal-1.jpg" alt="Professora Claudia ao lado de lideranças do Progressistas em evento de campanha">
+          <img src="noticia-paulo-gastal-2.jpg" alt="Professora Claudia em evento de campanha do Progressistas">
+        </div>
+        <div class="noticia-summary-row">
+          <div class="noticia-summary-text">
+            <span class="noticia-tag">Eleições 2026 · Progressistas Pelotas</span>
+            <h3>Paulo Gastal destaca importância de candidatura de Pelotas com foco na população idosa</h3>
+          </div>
+          <span class="icon" aria-hidden="true"></span>
+        </div>
+      </summary>
+      <div class="noticia-body">
+        <p>O presidente do Progressistas de Pelotas, Paulo Gastal, destacou a importância de Pelotas contar, nas eleições deste ano, com uma candidatura comprometida com as pautas e os direitos da população idosa. Para ele, a presença da Professora Cláudia na disputa representa uma oportunidade de ampliar o espaço de debate sobre o envelhecimento e as políticas públicas voltadas à terceira idade.</p>
+        <p>“É muito importante termos uma candidatura de Pelotas que coloque o idoso no centro do debate. Precisamos falar sobre envelhecimento saudável, saúde, qualidade de vida, segurança, respeito e, principalmente, sobre políticas públicas que garantam dignidade para quem dedicou uma vida inteira à construção da nossa sociedade”, afirmou Paulo Gastal.</p>
+        <p>Segundo o presidente do PP, a candidatura da Professora Cláudia também contribui para levar as demandas de Pelotas e da região para uma discussão mais ampla no Estado. A proposta é fortalecer uma agenda que reconheça o crescimento da população idosa e a necessidade de preparação do poder público para essa nova realidade demográfica.</p>
+        <p>“É uma candidatura que nasce em Pelotas e que tem uma pauta muito clara. A Professora Cláudia conhece a nossa realidade e tem uma bandeira importante, que é cuidar de quem cuidou da gente. Ter alguém disposto a defender essa causa e levar essas demandas para a Assembleia Legislativa é muito relevante para a nossa cidade e para toda a região”, ressaltou Gastal.</p>
+        <p>Para o dirigente partidário, a discussão sobre o envelhecimento precisa deixar de ser tratada apenas como uma questão assistencial e passar a envolver também saúde preventiva, mobilidade, inclusão, convivência, autonomia e qualidade de vida.</p>
+        <p>“A população está envelhecendo, e o poder público precisa estar preparado. O idoso precisa ser ouvido, respeitado e ter suas necessidades transformadas em políticas públicas. Por isso, considero muito importante termos uma candidatura de Pelotas que assuma essa pauta com clareza e compromisso”, concluiu Paulo Gastal.</p>
+      </div>
+    </details>
   </div>
 </section>
 
