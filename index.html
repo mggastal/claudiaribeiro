@@ -290,8 +290,32 @@ src="https://www.facebook.com/tr?id=1892946508345637&ev=PageView&noscript=1"
   .acc-body a.ref::before{content:'';display:inline-block;width:0.95em;height:0.95em;margin-right:0.3em;vertical-align:-0.12em;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linejoin='round'%3E%3Cpath d='M6 2h8l5 5v15H6z'/%3E%3Cpath d='M14 2v5h5'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linejoin='round'%3E%3Cpath d='M6 2h8l5 5v15H6z'/%3E%3Cpath d='M14 2v5h5'/%3E%3C/svg%3E") center/contain no-repeat;}
   .acc-body a.ref:hover{color:#1E9BD7;}
   @media(max-width:600px){.pauta-card{padding:18px 18px 8px;}.acc-body ul.itens li{grid-template-columns:46px 1fr;}}
-  @media(max-width:600px){.pauta-card{padding:18px 18px 8px;}.acc-body ul.itens li{grid-template-columns:46px 1fr;}}
-  @media(max-width:600px){.pauta-card{padding:18px 18px 8px;}.acc-body ul.itens li{grid-template-columns:46px 1fr;}}
+
+  /* ---------- NOTÍCIAS ---------- */
+  .noticias{background:#F6F2FB;}
+  .noticias .section-eyebrow{color:#8A6A1E;}
+  .noticias .section-head h2{color:#5B3A8C;}
+  .noticia-card{
+    background:#fff;border-radius:0 14px 14px 0;border-left:4px solid var(--gold);
+    padding:34px 38px;max-width:760px;box-shadow:0 10px 30px rgba(91,58,140,0.08);
+  }
+  .noticia-tag{
+    display:inline-block;font-family:'Anton',sans-serif;font-size:12px;letter-spacing:0.08em;
+    text-transform:uppercase;color:#8A6A1E;background:#FBEFD2;padding:5px 12px;
+    border-radius:999px;margin-bottom:16px;
+  }
+  .noticia-card h3{
+    font-family:'Archivo',sans-serif;font-weight:900;font-style:italic;
+    font-size:clamp(22px,2.6vw,30px);line-height:1.25;color:#5B3A8C;margin-bottom:14px;
+  }
+  .noticia-lead{font-weight:700;font-size:18px;color:rgba(46,23,85,0.85);margin-bottom:20px;}
+  .noticia-card p{font-size:17px;line-height:1.7;color:rgba(46,23,85,0.85);margin-bottom:16px;}
+  .noticia-sub{font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;color:#5B3A8C;margin:24px 0 10px;}
+  .noticia-fonte{
+    font-size:13px;color:rgba(46,23,85,0.55);margin-top:22px;padding-top:16px;
+    border-top:1px solid rgba(91,58,140,0.15);
+  }
+  @media(max-width:600px){.noticia-card{padding:26px 22px;}}
 
   /* ---------- REDES ---------- */
   .redes{
@@ -354,6 +378,7 @@ src="https://www.facebook.com/tr?id=1892946508345637&ev=PageView&noscript=1"
       <div class="navlinks">
         <a href="#sobre">Sobre</a>
         <a href="#propostas">Propostas</a>
+        <a href="#noticias">Notícias</a>
         <a href="#redes">Redes sociais</a>
       </div>
       <img src="logo-progressistas.png" alt="Progressistas" class="nav-party-logo">
@@ -627,6 +652,29 @@ src="https://www.facebook.com/tr?id=1892946508345637&ev=PageView&noscript=1"
         </div>
       </details>
     </div>
+  </div>
+</section>
+
+<section class="noticias" id="noticias">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow display">Fique por dentro</div>
+      <h2>Notícias</h2>
+    </div>
+    <article class="noticia-card">
+      <span class="noticia-tag">Eleições 2026 · INSS</span>
+      <h3>Comparecimento às urnas nas Eleições 2026 poderá valer como prova de vida para beneficiários do INSS</h3>
+      <p class="noticia-lead">Aposentados e pensionistas que comparecerem às urnas poderão ter o registro utilizado automaticamente pelo INSS para a comprovação de vida</p>
+      <p>Uma informação importante para aposentados, pensionistas e demais beneficiários do Instituto Nacional do Seguro Social (INSS): o comparecimento às urnas nas Eleições 2026 poderá ser utilizado como registro para a comprovação de vida.</p>
+      <p>A confirmação foi divulgada pelo próprio INSS e pelo Tribunal Superior Eleitoral (TSE). O comparecimento do beneficiário à votação integra os eventos que podem ser utilizados pelo Instituto para verificar se a pessoa continua viva, evitando a necessidade de realizar uma prova de vida exclusivamente para essa finalidade.</p>
+      <p>A medida está relacionada à sistemática de comprovação automática de vida adotada pelo INSS. O Instituto realiza o cruzamento de diferentes bases de dados governamentais e, entre essas informações, está o registro de comparecimento às eleições.</p>
+      <p>É importante destacar que quem não comparecer às urnas não terá o benefício bloqueado por esse motivo. O INSS continuará utilizando outras bases de dados para buscar automaticamente a comprovação de vida. O beneficiário somente será chamado a regularizar a situação caso não seja encontrada nenhuma informação que confirme sua vivacidade.</p>
+      <p>Segundo o INSS, a medida também contribui para reduzir deslocamentos e facilitar a vida de milhões de beneficiários, especialmente idosos e pessoas com dificuldade de locomoção. Atualmente, a Prova de Vida é realizada prioritariamente de forma automática, por meio do cruzamento de informações disponíveis nas bases governamentais.</p>
+      <h4 class="noticia-sub">Atenção aos golpes</h4>
+      <p>O INSS também alerta que aposentados e pensionistas devem ter cuidado com mensagens falsas relacionadas à Prova de Vida. O Instituto não solicita senhas, transferências de dinheiro ou dados bancários por telefone e recomenda que o cidadão utilize somente os canais oficiais, como o Meu INSS e a Central 135.</p>
+      <p>A informação oficial sobre a utilização do comparecimento eleitoral como prova de vida pode ser consultada nos canais do INSS e do TSE.</p>
+      <p class="noticia-fonte">Fonte: Instituto Nacional do Seguro Social (INSS) e Tribunal Superior Eleitoral (TSE).</p>
+    </article>
   </div>
 </section>
 
